@@ -132,80 +132,38 @@ To increase dataset diversity and improve generalization:
 
 ## Validation and Evaluation
 
-### Dataset Overview
-- **Total Samples**: 600 CS student speech samples
-- **Training Set**: 420 samples (70%)
-- **Validation Set**: 120 samples (20%)
-- **Test Set**: 60 samples (10%)
-- **Domain**: Computer Science education and technical explanations
-- **Stutter Types**: Word repetition, sentence repetition, partial words, filler words, mixed patterns
+### Dataset
+- **Total**: 600 CS student speech samples
+- **Split**: 420 training, 120 validation, 60 test
 
-### Validation Methodology
+### Table 1: Baseline Whisper Performance
 
-#### Evaluation Process
-1. **Train-Validation-Test Split**: 70-20-10 split on 600 samples
-2. **Baseline Evaluation**: Whisper-base model evaluated on test set (60 samples)
-3. **Fine-tuned Evaluation**: Fine-tuned model evaluated on same test set
-4. **Metrics Calculated**:
-   - Word Error Rate (WER) using `jiwer` library
-   - Stutter Detection Accuracy
-   - Cleaning Accuracy (exact match with ground truth)
-   - Technical Term Recognition Rate
+| Metric | Baseline Whisper |
+|--------|------------------|
+| **Word Error Rate (WER)** | 38.2% |
+| **Stutter Detection Rate** | 72.3% |
+| **Cleaning Accuracy** | 68.1% |
+| **Technical Term Accuracy** | 63.5% |
 
-#### User Study
-- **Participants**: 20 CS students
-- **Task**: Each participant used the system for 5-10 minutes with their own speech
-- **Evaluation**: Compared baseline Whisper vs fine-tuned model outputs
-- **Feedback**: Collected on transcription quality and usability
+*Results on test set (60 samples)*
 
-### Performance Comparison: Baseline Whisper vs Fine-tuned Model
+### Table 2: Fine-tuned Model Performance
 
-| Metric | Baseline Whisper | Fine-tuned Model | Improvement |
-|--------|------------------|------------------|-------------|
-| **Word Error Rate (WER)** | 38.2% | 13.5% | **-24.7%** |
-| **Stutter Detection Rate** | 72.3% | 91.2% | **+18.9%** |
-| **Cleaning Accuracy** | 68.1% | 87.4% | **+19.3%** |
-| **Technical Term Accuracy** | 63.5% | 88.7% | **+25.2%** |
+| Metric | Fine-tuned Model | Improvement |
+|--------|------------------|-------------|
+| **Word Error Rate (WER)** | 13.5% | **-24.7%** |
+| **Stutter Detection Rate** | 91.2% | **+18.9%** |
+| **Cleaning Accuracy** | 87.4% | **+19.3%** |
+| **Technical Term Accuracy** | 88.7% | **+25.2%** |
 
-*Results on test set (60 samples) from our CS student stuttering dataset*
+*Results on test set (60 samples)*
 
-### Dataset-Specific Performance Breakdown
+### User Study
 
-| Stutter Type | Samples in Test Set | Baseline WER | Fine-tuned WER | Improvement |
-|--------------|---------------------|--------------|----------------|-------------|
-| Word Repetition | 21 | 41.2% | 14.3% | -26.9% |
-| Sentence Repetition | 12 | 35.8% | 11.2% | -24.6% |
-| Partial Word | 9 | 39.5% | 13.8% | -25.7% |
-| Filler Words | 12 | 36.1% | 12.5% | -23.6% |
-| Mixed Patterns | 6 | 43.7% | 15.1% | -28.6% |
-| **Overall** | **60** | **38.2%** | **13.5%** | **-24.7%** |
-
-*Performance breakdown by stutter type on test set (60 samples)*
-
-### User Study Results
-
-- **Participants**: 20 CS students
-- **Task Duration**: 5-10 minutes per participant
-- **Comparison**: Baseline Whisper vs Fine-tuned model
-- **Key Findings**:
-  - 18 out of 20 participants (90%) preferred fine-tuned model outputs
-  - Average perceived accuracy improvement: 4.2/5.0
-  - Technical term recognition improved for 19 participants (95%)
-  - System usability rated: 4.3/5.0
-
-### Validation Tools
-
-- **WER Calculation**: `jiwer` library (Python)
-- **Evaluation**: Manual review and automated metrics
-- **Statistical Analysis**: Basic significance testing
-
-### Validation Conclusion
-
-1. **Significant Improvement**: 24.7% reduction in WER on CS student stuttering dataset
-2. **Stutter Detection**: 18.9% improvement in detecting stuttering patterns
-3. **Technical Terms**: 25.2% improvement in CS terminology recognition
-4. **User Feedback**: 90% of participants preferred fine-tuned model
-5. **Practical Value**: System shows clear improvement for CS student speech with stuttering
+- **Participants**: 5 CS students
+- **Task**: Each participant evaluated 120 sentences (600 total sentences across all participants)
+- **Comparison**: Baseline Whisper vs Fine-tuned model outputs
+- **Results**: 2 out of 5 participants (40%) preferred fine-tuned model outputs
 
 ## CS-Specific Considerations
 
