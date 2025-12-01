@@ -91,17 +91,45 @@ This will:
 2. Process it and display all results
 3. Show transcription, cleaned text, stutters, and predictions
 
+## Fine-Tuning
+
+The project includes a fine-tuning script and dataset for improving Whisper's accuracy on stuttered speech:
+
+- **`finetune.py`**: Fine-tuning script using LoRA (Low-Rank Adaptation)
+- **`finetuning_dataset.json`**: 600 CS student speech samples with stuttering patterns
+- **`finetuning_dataset.txt`**: Text format of the dataset
+- **`finetuning_approach.md`**: Detailed fine-tuning methodology
+- **`FINETUNING_GUIDE.md`**: Step-by-step fine-tuning instructions
+
+### Quick Start for Fine-Tuning
+
+```bash
+# Install fine-tuning dependencies
+pip install -r requirements_finetune.txt
+
+# Run fine-tuning
+python finetune.py
+```
+
+See `FINETUNING_GUIDE.md` for detailed instructions.
+
 ## Project Structure
 
 ```
 SBU-CSE-570/
-├── speech_processor.py    # Main speech processing module
-├── app.py                 # Flask web server
-├── demo_standalone.py     # Standalone command-line demo
+├── speech_processor.py       # Main speech processing module
+├── app.py                    # Flask web server
+├── finetune.py               # Fine-tuning script
+├── demo_standalone.py         # Standalone command-line demo
 ├── templates/
-│   └── index.html        # Web interface
-├── requirements.txt      # Python dependencies
-└── README.md            # This file
+│   └── index.html            # Web interface
+├── finetuning_dataset.json    # Fine-tuning dataset (600 samples)
+├── finetuning_dataset.txt     # Dataset in text format
+├── finetuning_approach.md     # Fine-tuning methodology
+├── FINETUNING_GUIDE.md        # Fine-tuning instructions
+├── requirements.txt           # Python dependencies
+├── requirements_finetune.txt  # Fine-tuning dependencies
+└── README.md                  # This file
 ```
 
 ## How It Works

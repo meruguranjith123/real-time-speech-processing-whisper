@@ -9,3 +9,10 @@ eventlet>=0.33.0
 pydub>=0.25.1
 pyaudio>=0.2.11
 
+# Fine-tuning dependencies (optional - only needed for finetune.py)
+# transformers>=4.35.0
+# peft>=0.6.0
+# accelerate>=0.24.0
+# datasets>=2.14.0
+# tqdm>=4.66.0
+
