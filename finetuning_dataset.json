@@ -1,0 +1,4828 @@
+{
+  "dataset_info": {
+    "name": "CS Student Stuttering Speech Recognition Dataset",
+    "version": "2.0",
+    "created_date": "2024",
+    "purpose": "Fine-tuning Whisper model for CS student stuttering speech",
+    "base_model": "whisper-base",
+    "total_samples": 600,
+    "total_duration_seconds": 3600,
+    "domain": "computer_science_education",
+    "speaker_profile": "CS_student"
+  },
+  "fine_tuning_config": {
+    "method": "LoRA (Low-Rank Adaptation)",
+    "learning_rate": 1e-05,
+    "batch_size": 4,
+    "epochs": 10,
+    "optimizer": "AdamW",
+    "weight_decay": 0.01,
+    "data_augmentation": {
+      "speed_variation": "\u00b110%",
+      "noise_injection": "SNR 20-30dB",
+      "volume_normalization": "\u00b13dB"
+    }
+  },
+  "training_samples": [
+    {
+      "id": 1,
+      "raw_transcription": "we test um the compiler with",
+      "cleaned_transcription": "We test the compiler with.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "compiler"
+    },
+    {
+      "id": 2,
+      "raw_transcription": "we test the binary tree with",
+      "cleaned_transcription": "We test the binary tree with.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "binary tree"
+    },
+    {
+      "id": 3,
+      "raw_transcription": "um um the the the the class allows us us to initialize initialize quickly",
+      "cleaned_transcription": "The class allows us to initialize quickly.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "class"
+    },
+    {
+      "id": 4,
+      "raw_transcription": "we test the database with",
+      "cleaned_transcription": "We test the database with.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "database"
+    },
+    {
+      "id": 5,
+      "raw_transcription": "th-th-th-the software software software well architecture architecture architecture architecture so has time well complexity of of of of",
+      "cleaned_transcription": "The software architecture has time complexity of.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 6,
+      "raw_transcription": "the big o notation processes data by. the big o notation processes data by.",
+      "cleaned_transcription": "The big O notation processes data by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 7,
+      "raw_transcription": "the trie requires us to. the trie requires us to.",
+      "cleaned_transcription": "The trie requires us to.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "trie"
+    },
+    {
+      "id": 8,
+      "raw_transcription": "the stack stack requires us to",
+      "cleaned_transcription": "The stack requires us to.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "stack"
+    },
+    {
+      "id": 9,
+      "raw_transcription": "the design patterns processes processes data data data data by",
+      "cleaned_transcription": "The design patterns processes data by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "design patterns"
+    },
+    {
+      "id": 10,
+      "raw_transcription": "the space complexity can uh be improved by",
+      "cleaned_transcription": "The space complexity can be improved by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 11,
+      "raw_transcription": "the the the average average average case works by iterating iterating iterating",
+      "cleaned_transcription": "The average case works by iterating.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "average case"
+    },
+    {
+      "id": 12,
+      "raw_transcription": "the docker you know helps you know us verify better",
+      "cleaned_transcription": "The Docker helps us verify better.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 13,
+      "raw_transcription": "th-th-the solid principles helps us build better",
+      "cleaned_transcription": "The SOLID principles helps us build better.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 14,
+      "raw_transcription": "the the the recursive algorithm handles handles errors by",
+      "cleaned_transcription": "The recursive algorithm handles errors by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 15,
+      "raw_transcription": "the hash table requires us to. the hash table requires us to. the hash table requires us to. the hash table requires us to.",
+      "cleaned_transcription": "The hash table requires us to.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 16,
+      "raw_transcription": "the distributed system has time complexity of. the distributed system has time complexity of.",
+      "cleaned_transcription": "The distributed system has time complexity of.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 17,
+      "raw_transcription": "when when when we we decrypt the the the software architecture we need",
+      "cleaned_transcription": "When we decrypt the software architecture we need.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "software architecture"
+    },
+    {
+      "id": 18,
+      "raw_transcription": "we uh traverse traverse traverse traverse the algorithm algorithm algorithm uh algorithm by processing processing uh",
+      "cleaned_transcription": "We traverse the algorithm by processing.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 19,
+      "raw_transcription": "the hash table is ah used to search information um so",
+      "cleaned_transcription": "The hash table is used to search information.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 20,
+      "raw_transcription": "t-t-the docker handles errors by",
+      "cleaned_transcription": "The Docker handles errors by.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 21,
+      "raw_transcription": "t-t-the sorting algorithm works by iterating",
+      "cleaned_transcription": "The sorting algorithm works by iterating.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 22,
+      "raw_transcription": "th-th-th-the api has time complexity of",
+      "cleaned_transcription": "The API has time complexity of.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 23,
+      "raw_transcription": "we deploy well the so divide and conquer by by by well processing",
+      "cleaned_transcription": "We deploy the divide and conquer by processing.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "divide and conquer"
+    },
+    {
+      "id": 24,
+      "raw_transcription": "the procedural programming handles errors by. the procedural programming handles errors by. the procedural programming handles errors by.",
+      "cleaned_transcription": "The procedural programming handles errors by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 25,
+      "raw_transcription": "er um the object-oriented programming requires us to um",
+      "cleaned_transcription": "The object-oriented programming requires us to.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 26,
+      "raw_transcription": "we can you know build build er using the you know the binary tree",
+      "cleaned_transcription": "We can build using the binary tree.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "binary tree"
+    },
+    {
+      "id": 27,
+      "raw_transcription": "the the ci/cd search efficiently efficiently efficiently efficiently",
+      "cleaned_transcription": "The CI/CD search efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 28,
+      "raw_transcription": "th-th-th-the optimization so helps us debug debug debug better",
+      "cleaned_transcription": "The optimization helps us debug better.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "optimization"
+    },
+    {
+      "id": 29,
+      "raw_transcription": "the procedural procedural programming is used to iterate information",
+      "cleaned_transcription": "The procedural programming is used to iterate information.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 30,
+      "raw_transcription": "the dynamic programming processes data by. the dynamic programming processes data by.",
+      "cleaned_transcription": "The dynamic programming processes data by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "dynamic programming"
+    },
+    {
+      "id": 31,
+      "raw_transcription": "when we debug the space complexity we need. when we debug the space complexity we need. when we debug the space complexity we need. when we debug the space complexity we need.",
+      "cleaned_transcription": "When we debug the space complexity we need.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 32,
+      "raw_transcription": "we we we we test the the trie with",
+      "cleaned_transcription": "We test the trie with.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "trie"
+    },
+    {
+      "id": 33,
+      "raw_transcription": "wh-wh-when we encrypt the worst case we need",
+      "cleaned_transcription": "When we encrypt the worst case we need.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "worst case"
+    },
+    {
+      "id": 34,
+      "raw_transcription": "to compute the the the containerization we we must",
+      "cleaned_transcription": "To compute the containerization we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "containerization"
+    },
+    {
+      "id": 35,
+      "raw_transcription": "the the ide ide ide requires us us us to",
+      "cleaned_transcription": "The IDE requires us to.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 36,
+      "raw_transcription": "we can implement using the generator",
+      "cleaned_transcription": "We can implement using the generator.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "generator"
+    },
+    {
+      "id": 37,
+      "raw_transcription": "the er ah dynamic programming requires us uh to",
+      "cleaned_transcription": "The dynamic programming requires us to.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "dynamic programming"
+    },
+    {
+      "id": 38,
+      "raw_transcription": "the api initialize the data um efficiently",
+      "cleaned_transcription": "The API initialize the data efficiently.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 39,
+      "raw_transcription": "the the the queue iterate the data efficiently",
+      "cleaned_transcription": "The queue iterate the data efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "queue"
+    },
+    {
+      "id": 40,
+      "raw_transcription": "t-t-the interpreter handles errors by",
+      "cleaned_transcription": "The interpreter handles errors by.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "interpreter"
+    },
+    {
+      "id": 41,
+      "raw_transcription": "the functional programming programming uh handles handles errors by",
+      "cleaned_transcription": "The functional programming handles errors by.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "function"
+    },
+    {
+      "id": 42,
+      "raw_transcription": "we can er create using the big o notation",
+      "cleaned_transcription": "We can create using the big O notation.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 43,
+      "raw_transcription": "the asymptotic asymptotic you know asymptotic analysis helps helps helps helps us initialize better better better better",
+      "cleaned_transcription": "The asymptotic analysis helps us initialize better.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "asymptotic analysis"
+    },
+    {
+      "id": 44,
+      "raw_transcription": "the database works by iterating. the database works by iterating. the database works by iterating. the database works by iterating.",
+      "cleaned_transcription": "The database works by iterating.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "database"
+    },
+    {
+      "id": 45,
+      "raw_transcription": "the the the the best case helps us us us us process process process better",
+      "cleaned_transcription": "The best case helps us process better.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 46,
+      "raw_transcription": "the linked list handles errors by. the linked list handles errors by. the linked list handles errors by. the linked list handles errors by.",
+      "cleaned_transcription": "The linked list handles errors by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "linked list"
+    },
+    {
+      "id": 47,
+      "raw_transcription": "the binary search er tree can be improved um by",
+      "cleaned_transcription": "The binary search tree can be improved by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "binary search tree"
+    },
+    {
+      "id": 48,
+      "raw_transcription": "the software architecture works by iterating. the software architecture works by iterating.",
+      "cleaned_transcription": "The software architecture works by iterating.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "software architecture"
+    },
+    {
+      "id": 49,
+      "raw_transcription": "the backtracking er encrypt well efficiently",
+      "cleaned_transcription": "The backtracking encrypt efficiently.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "backtracking"
+    },
+    {
+      "id": 50,
+      "raw_transcription": "wh-wh-wh-when we test the searching algorithm we need",
+      "cleaned_transcription": "When we test the searching algorithm we need.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 51,
+      "raw_transcription": "when we ah initialize the operating system like we need",
+      "cleaned_transcription": "When we initialize the operating system we need.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "operating system"
+    },
+    {
+      "id": 52,
+      "raw_transcription": "we implement the software architecture using like",
+      "cleaned_transcription": "We implement the software architecture using.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "software architecture"
+    },
+    {
+      "id": 53,
+      "raw_transcription": "we optimize the generator for. we optimize the generator for. we optimize the generator for.",
+      "cleaned_transcription": "We optimize the generator for.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "generator"
+    },
+    {
+      "id": 54,
+      "raw_transcription": "you know the well docker verify efficiently uh",
+      "cleaned_transcription": "The Docker verify efficiently.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 55,
+      "raw_transcription": "we can process using the method method method method",
+      "cleaned_transcription": "We can process using the method.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "method"
+    },
+    {
+      "id": 56,
+      "raw_transcription": "the dynamic programming can be be be be improved improved improved by",
+      "cleaned_transcription": "The dynamic programming can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "dynamic programming"
+    },
+    {
+      "id": 57,
+      "raw_transcription": "the main idea verify the design patterns patterns patterns patterns",
+      "cleaned_transcription": "The main idea verify the design patterns.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "design patterns"
+    },
+    {
+      "id": 58,
+      "raw_transcription": "we implement the best case using",
+      "cleaned_transcription": "We implement the best case using.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 59,
+      "raw_transcription": "the the the git git git requires requires us to",
+      "cleaned_transcription": "The Git requires us to.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 60,
+      "raw_transcription": "we you know can ah develop using using the the the best case case case case",
+      "cleaned_transcription": "We can develop using the best case.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 61,
+      "raw_transcription": "w-w-w-when we create create create the sorting sorting sorting algorithm we need er",
+      "cleaned_transcription": "When we create the sorting algorithm we need.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 62,
+      "raw_transcription": "we optimize the like binary tree for you know",
+      "cleaned_transcription": "We optimize the binary tree for.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "binary tree"
+    },
+    {
+      "id": 63,
+      "raw_transcription": "the generator generator generator generator helps us us process better better",
+      "cleaned_transcription": "The generator helps us process better.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "generator"
+    },
+    {
+      "id": 64,
+      "raw_transcription": "the array uses space complexity. the array uses space complexity. the array uses space complexity. the array uses space complexity.",
+      "cleaned_transcription": "The array uses space complexity.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "array"
+    },
+    {
+      "id": 65,
+      "raw_transcription": "when we optimize the generator we need. when we optimize the generator we need.",
+      "cleaned_transcription": "When we optimize the generator we need.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "generator"
+    },
+    {
+      "id": 66,
+      "raw_transcription": "well the binary tree processes data by",
+      "cleaned_transcription": "The binary tree processes data by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "binary tree"
+    },
+    {
+      "id": 67,
+      "raw_transcription": "the queue requires us to. the queue requires us to. the queue requires us to.",
+      "cleaned_transcription": "The queue requires us to.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "queue"
+    },
+    {
+      "id": 68,
+      "raw_transcription": "the the like the the best case processes processes processes uh data you know data by",
+      "cleaned_transcription": "The best case processes data by.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 69,
+      "raw_transcription": "the functional programming allows er uh us to design quickly",
+      "cleaned_transcription": "The functional programming allows us to design quickly.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "function"
+    },
+    {
+      "id": 70,
+      "raw_transcription": "so the functional programming processes data by",
+      "cleaned_transcription": "The functional programming processes data by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "function"
+    },
+    {
+      "id": 71,
+      "raw_transcription": "the functional programming programming has has time time time time complexity of",
+      "cleaned_transcription": "The functional programming has time complexity of.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "function"
+    },
+    {
+      "id": 72,
+      "raw_transcription": "the greedy algorithm algorithm convert the data efficiently",
+      "cleaned_transcription": "The greedy algorithm convert the data efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 73,
+      "raw_transcription": "we iterate the algorithm algorithm algorithm algorithm by processing processing",
+      "cleaned_transcription": "We iterate the algorithm by processing.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 74,
+      "raw_transcription": "the the the exception works by iterating",
+      "cleaned_transcription": "The exception works by iterating.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "exception"
+    },
+    {
+      "id": 75,
+      "raw_transcription": "we implement the stack using using using",
+      "cleaned_transcription": "We implement the stack using.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "stack"
+    },
+    {
+      "id": 76,
+      "raw_transcription": "to to to to authenticate the the hash table table table we must",
+      "cleaned_transcription": "To authenticate the hash table we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 77,
+      "raw_transcription": "the the the interpreter allows us us us us to process quickly",
+      "cleaned_transcription": "The interpreter allows us to process quickly.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "interpreter"
+    },
+    {
+      "id": 78,
+      "raw_transcription": "when uh we encrypt the decorator uh ah we need",
+      "cleaned_transcription": "When we encrypt the decorator we need.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "decorator"
+    },
+    {
+      "id": 79,
+      "raw_transcription": "the greedy algorithm can be improved by. the greedy algorithm can be improved by.",
+      "cleaned_transcription": "The greedy algorithm can be improved by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 80,
+      "raw_transcription": "the database er allows allows allows us to verify uh verify quickly",
+      "cleaned_transcription": "The database allows us to verify quickly.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "database"
+    },
+    {
+      "id": 81,
+      "raw_transcription": "we optimize optimize optimize optimize the object-oriented programming for for",
+      "cleaned_transcription": "We optimize the object-oriented programming for.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 82,
+      "raw_transcription": "the ci/cd ci/cd can be improved improved by",
+      "cleaned_transcription": "The CI/CD can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 83,
+      "raw_transcription": "we test the containerization with",
+      "cleaned_transcription": "We test the containerization with.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "containerization"
+    },
+    {
+      "id": 84,
+      "raw_transcription": "t-t-the graphql uses space complexity",
+      "cleaned_transcription": "The GraphQL uses space complexity.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 85,
+      "raw_transcription": "th-th-th-the ide allows us to sort quickly",
+      "cleaned_transcription": "The IDE allows us to sort quickly.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 86,
+      "raw_transcription": "th-th-th-the the the the worst case handles handles handles handles errors by by um",
+      "cleaned_transcription": "The worst case handles errors by.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "worst case"
+    },
+    {
+      "id": 87,
+      "raw_transcription": "the the the iterator iterator iterator iterator build the the data efficiently",
+      "cleaned_transcription": "The iterator build the data efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "iterator"
+    },
+    {
+      "id": 88,
+      "raw_transcription": "we test the testing framework with. we test the testing framework with.",
+      "cleaned_transcription": "We test the testing framework with.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "testing framework"
+    },
+    {
+      "id": 89,
+      "raw_transcription": "the the operating operating operating operating system has time complexity complexity complexity of",
+      "cleaned_transcription": "The operating system has time complexity of.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 90,
+      "raw_transcription": "we can encrypt using you know the parameter",
+      "cleaned_transcription": "We can encrypt using the parameter.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "parameter"
+    },
+    {
+      "id": 91,
+      "raw_transcription": "to to to to transform the the exception we we we we must",
+      "cleaned_transcription": "To transform the exception we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "exception"
+    },
+    {
+      "id": 92,
+      "raw_transcription": "we we we we test test test the the the the object-oriented uh programming with",
+      "cleaned_transcription": "We test the object-oriented programming with.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 93,
+      "raw_transcription": "we can design ah using the the uh the um the method",
+      "cleaned_transcription": "We can design using the method.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "method"
+    },
+    {
+      "id": 94,
+      "raw_transcription": "we verify the design patterns by processing. we verify the design patterns by processing. we verify the design patterns by processing. we verify the design patterns by processing.",
+      "cleaned_transcription": "We verify the design patterns by processing.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "design patterns"
+    },
+    {
+      "id": 95,
+      "raw_transcription": "t-t-the worst case has time complexity of",
+      "cleaned_transcription": "The worst case has time complexity of.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 96,
+      "raw_transcription": "why this this this this is transform the backtracking",
+      "cleaned_transcription": "Why this is transform the backtracking.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "backtracking"
+    },
+    {
+      "id": 97,
+      "raw_transcription": "the the the method helps us us us us test better",
+      "cleaned_transcription": "The method helps us test better.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "method"
+    },
+    {
+      "id": 98,
+      "raw_transcription": "why this is is is is develop the graphql",
+      "cleaned_transcription": "Why this is develop the GraphQL.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 99,
+      "raw_transcription": "we we we we test test test test the trie with with with",
+      "cleaned_transcription": "We test the trie with.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "trie"
+    },
+    {
+      "id": 100,
+      "raw_transcription": "to to to to initialize the cloud computing we must must must must",
+      "cleaned_transcription": "To initialize the cloud computing we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "cloud computing"
+    },
+    {
+      "id": 101,
+      "raw_transcription": "the compiler processes data by. the compiler processes data by. the compiler processes data by.",
+      "cleaned_transcription": "The compiler processes data by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "compiler"
+    },
+    {
+      "id": 102,
+      "raw_transcription": "to sort the like best case we must well er",
+      "cleaned_transcription": "To sort the best case we must.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 103,
+      "raw_transcription": "the object object object object processes processes processes processes data by",
+      "cleaned_transcription": "The object processes data by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 104,
+      "raw_transcription": "the ci/cd helps helps helps us iterate iterate iterate better better",
+      "cleaned_transcription": "The CI/CD helps us iterate better.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 105,
+      "raw_transcription": "the the the the testing framework processes data data data data by",
+      "cleaned_transcription": "The testing framework processes data by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "testing framework"
+    },
+    {
+      "id": 106,
+      "raw_transcription": "th-th-the git has time complexity of",
+      "cleaned_transcription": "The Git has time complexity of.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 107,
+      "raw_transcription": "we er so optimize the the the the containerization for for for",
+      "cleaned_transcription": "We optimize the containerization for.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "containerization"
+    },
+    {
+      "id": 108,
+      "raw_transcription": "the the the graphql is used to to debug information",
+      "cleaned_transcription": "The GraphQL is used to debug information.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 109,
+      "raw_transcription": "th-th-the operating system can be improved by",
+      "cleaned_transcription": "The operating system can be improved by.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "operating system"
+    },
+    {
+      "id": 110,
+      "raw_transcription": "when we we like we uh we hash the linked ah list we need",
+      "cleaned_transcription": "When we hash the linked list we need.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "linked list"
+    },
+    {
+      "id": 111,
+      "raw_transcription": "ah uh the queue works by iterating",
+      "cleaned_transcription": "The queue works by iterating.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "queue"
+    },
+    {
+      "id": 112,
+      "raw_transcription": "the the searching searching algorithm uses uses uses uses space complexity",
+      "cleaned_transcription": "The searching algorithm uses space complexity.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 113,
+      "raw_transcription": "we design the procedural procedural programming by you know processing processing",
+      "cleaned_transcription": "We design the procedural programming by processing.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 114,
+      "raw_transcription": "er the software architecture has time complexity of",
+      "cleaned_transcription": "The software architecture has time complexity of.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 115,
+      "raw_transcription": "the cloud computing computing requires us to",
+      "cleaned_transcription": "The cloud computing requires us to.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "cloud computing"
+    },
+    {
+      "id": 116,
+      "raw_transcription": "we can process using the solid principles. we can process using the solid principles.",
+      "cleaned_transcription": "We can process using the SOLID principles.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 117,
+      "raw_transcription": "the linked list can be improved by by by by",
+      "cleaned_transcription": "The linked list can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "linked list"
+    },
+    {
+      "id": 118,
+      "raw_transcription": "we can can traverse using the heap heap heap",
+      "cleaned_transcription": "We can traverse using the heap.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "heap"
+    },
+    {
+      "id": 119,
+      "raw_transcription": "t-t-the the you know the hash hash hash table requires requires requires like uh requires us to",
+      "cleaned_transcription": "The hash table requires us to.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 120,
+      "raw_transcription": "the the solution is configure the compiler compiler compiler",
+      "cleaned_transcription": "The solution is configure the compiler.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "compiler"
+    },
+    {
+      "id": 121,
+      "raw_transcription": "the procedural procedural programming programming programming programming processes data by",
+      "cleaned_transcription": "The procedural programming processes data by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 122,
+      "raw_transcription": "we implement the graph using. we implement the graph using. we implement the graph using. we implement the graph using.",
+      "cleaned_transcription": "We implement the graph using.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 123,
+      "raw_transcription": "the the the the heap works by by by by iterating",
+      "cleaned_transcription": "The heap works by iterating.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "heap"
+    },
+    {
+      "id": 124,
+      "raw_transcription": "we well convert the greedy algorithm by processing",
+      "cleaned_transcription": "We convert the greedy algorithm by processing.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 125,
+      "raw_transcription": "when we like compute the software architecture we need uh",
+      "cleaned_transcription": "When we compute the software architecture we need.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "software architecture"
+    },
+    {
+      "id": 126,
+      "raw_transcription": "the way it works process process the object-oriented object-oriented programming",
+      "cleaned_transcription": "The way it works process the object-oriented programming.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 127,
+      "raw_transcription": "the key point encrypt the solid solid solid principles",
+      "cleaned_transcription": "The key point encrypt the SOLID principles.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 128,
+      "raw_transcription": "the function requires us us us us to",
+      "cleaned_transcription": "The function requires us to.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "function"
+    },
+    {
+      "id": 129,
+      "raw_transcription": "the testing framework has time complexity of. the testing framework has time complexity of. the testing framework has time complexity of. the testing framework has time complexity of.",
+      "cleaned_transcription": "The testing framework has time complexity of.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 130,
+      "raw_transcription": "we test the sorting algorithm with",
+      "cleaned_transcription": "We test the sorting algorithm with.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 131,
+      "raw_transcription": "when we we configure the software software software architecture we need",
+      "cleaned_transcription": "When we configure the software architecture we need.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "software architecture"
+    },
+    {
+      "id": 132,
+      "raw_transcription": "the graphql graphql graphql create efficiently",
+      "cleaned_transcription": "The GraphQL create efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 133,
+      "raw_transcription": "we encrypt the heap heap heap um heap by processing er",
+      "cleaned_transcription": "We encrypt the heap by processing.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "heap"
+    },
+    {
+      "id": 134,
+      "raw_transcription": "we test the dynamic programming with",
+      "cleaned_transcription": "We test the dynamic programming with.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "dynamic programming"
+    },
+    {
+      "id": 135,
+      "raw_transcription": "the best case convert the data efficiently. the best case convert the data efficiently. the best case convert the data efficiently.",
+      "cleaned_transcription": "The best case convert the data efficiently.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 136,
+      "raw_transcription": "we build the average average case by by by processing processing processing processing",
+      "cleaned_transcription": "We build the average case by processing.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "average case"
+    },
+    {
+      "id": 137,
+      "raw_transcription": "to calculate the the rest api api api we must",
+      "cleaned_transcription": "To calculate the REST API we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 138,
+      "raw_transcription": "the asymptotic asymptotic analysis can be improved improved by by by by",
+      "cleaned_transcription": "The asymptotic analysis can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "asymptotic analysis"
+    },
+    {
+      "id": 139,
+      "raw_transcription": "t-t-the the the interpreter interpreter interpreter like interpreter handles errors errors errors by",
+      "cleaned_transcription": "The interpreter handles errors by.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "interpreter"
+    },
+    {
+      "id": 140,
+      "raw_transcription": "t-t-the big o well notation notation handles handles so handles handles errors by",
+      "cleaned_transcription": "The big O notation handles errors by.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 141,
+      "raw_transcription": "the docker docker processes data data data by",
+      "cleaned_transcription": "The Docker processes data by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 142,
+      "raw_transcription": "we we we we implement the rest api api api well ah api by processing",
+      "cleaned_transcription": "We implement the REST API by processing.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 143,
+      "raw_transcription": "to optimize the best case we must. to optimize the best case we must.",
+      "cleaned_transcription": "To optimize the best case we must.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 144,
+      "raw_transcription": "the generator uses well like space complexity",
+      "cleaned_transcription": "The generator uses space complexity.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "generator"
+    },
+    {
+      "id": 145,
+      "raw_transcription": "the sorting algorithm requires us to. the sorting algorithm requires us to. the sorting algorithm requires us to.",
+      "cleaned_transcription": "The sorting algorithm requires us to.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 146,
+      "raw_transcription": "the searching algorithm processes data by by by",
+      "cleaned_transcription": "The searching algorithm processes data by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 147,
+      "raw_transcription": "th-th-the linked list handles errors by",
+      "cleaned_transcription": "The linked list handles errors by.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "linked list"
+    },
+    {
+      "id": 148,
+      "raw_transcription": "we we we we ah implement implement implement the algorithm using using using",
+      "cleaned_transcription": "We implement the algorithm using.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 149,
+      "raw_transcription": "to to traverse the the the hash table table we must",
+      "cleaned_transcription": "To traverse the hash table we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 150,
+      "raw_transcription": "the object helps us us us validate validate validate better better better better",
+      "cleaned_transcription": "The object helps us validate better.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 151,
+      "raw_transcription": "t-t-the solution is transform the return value",
+      "cleaned_transcription": "The solution is transform the return value.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "return value"
+    },
+    {
+      "id": 152,
+      "raw_transcription": "f-f-for example transform the procedural programming",
+      "cleaned_transcription": "For example transform the procedural programming.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 153,
+      "raw_transcription": "we process the average case by processing",
+      "cleaned_transcription": "We process the average case by processing.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "average case"
+    },
+    {
+      "id": 154,
+      "raw_transcription": "so basically decrypt the linked list. so basically decrypt the linked list.",
+      "cleaned_transcription": "So basically decrypt the linked list.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "linked list"
+    },
+    {
+      "id": 155,
+      "raw_transcription": "th-th-th-the software architecture works by iterating",
+      "cleaned_transcription": "The software architecture works by iterating.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "software architecture"
+    },
+    {
+      "id": 156,
+      "raw_transcription": "when we traverse the database we we we we need",
+      "cleaned_transcription": "When we traverse the database we need.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "database"
+    },
+    {
+      "id": 157,
+      "raw_transcription": "the the cloud computing computing can be improved by",
+      "cleaned_transcription": "The cloud computing can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "cloud computing"
+    },
+    {
+      "id": 158,
+      "raw_transcription": "th-th-the the the the distributed system sort sort efficiently er",
+      "cleaned_transcription": "The distributed system sort efficiently.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "distributed system"
+    },
+    {
+      "id": 159,
+      "raw_transcription": "t-t-t-the binary tree implement the data efficiently",
+      "cleaned_transcription": "The binary tree implement the data efficiently.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "binary tree"
+    },
+    {
+      "id": 160,
+      "raw_transcription": "we can optimize like using the exception well like",
+      "cleaned_transcription": "We can optimize using the exception.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "exception"
+    },
+    {
+      "id": 161,
+      "raw_transcription": "when we decrypt decrypt decrypt decrypt the stack we we we we need",
+      "cleaned_transcription": "When we decrypt the stack we need.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "stack"
+    },
+    {
+      "id": 162,
+      "raw_transcription": "er the time complexity works like by iterating",
+      "cleaned_transcription": "The time complexity works by iterating.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 163,
+      "raw_transcription": "the git iterate efficiently. the git iterate efficiently. the git iterate efficiently.",
+      "cleaned_transcription": "The Git iterate efficiently.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 164,
+      "raw_transcription": "the software architecture allows allows allows allows us to to to analyze quickly quickly",
+      "cleaned_transcription": "The software architecture allows us to analyze quickly.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "software architecture"
+    },
+    {
+      "id": 165,
+      "raw_transcription": "when we analyze so the searching you know algorithm we need",
+      "cleaned_transcription": "When we analyze the searching algorithm we need.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 166,
+      "raw_transcription": "the heap heap heap is uh used well used to to to cache information",
+      "cleaned_transcription": "The heap is used to cache information.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "heap"
+    },
+    {
+      "id": 167,
+      "raw_transcription": "we optimize the stack for. we optimize the stack for.",
+      "cleaned_transcription": "We optimize the stack for.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "stack"
+    },
+    {
+      "id": 168,
+      "raw_transcription": "er we we we ah can optimize uh using the interpreter",
+      "cleaned_transcription": "We can optimize using the interpreter.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "interpreter"
+    },
+    {
+      "id": 169,
+      "raw_transcription": "the class works works works works by iterating iterating iterating iterating",
+      "cleaned_transcription": "The class works by iterating.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "class"
+    },
+    {
+      "id": 170,
+      "raw_transcription": "th-th-the the the variable so handles errors errors errors by by by by",
+      "cleaned_transcription": "The variable handles errors by.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "variable"
+    },
+    {
+      "id": 171,
+      "raw_transcription": "we we we implement the the the optimization optimization optimization optimization using",
+      "cleaned_transcription": "We implement the optimization using.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "optimization"
+    },
+    {
+      "id": 172,
+      "raw_transcription": "ah we optimize uh the solid principles for",
+      "cleaned_transcription": "We optimize the SOLID principles for.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 173,
+      "raw_transcription": "the distributed system uses space complexity. the distributed system uses space complexity. the distributed system uses space complexity.",
+      "cleaned_transcription": "The distributed system uses space complexity.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 174,
+      "raw_transcription": "we process the debugger by processing. we process the debugger by processing. we process the debugger by processing. we process the debugger by processing.",
+      "cleaned_transcription": "We process the debugger by processing.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "debugger"
+    },
+    {
+      "id": 175,
+      "raw_transcription": "the optimization is used used to encrypt information information",
+      "cleaned_transcription": "The optimization is used to encrypt information.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "optimization"
+    },
+    {
+      "id": 176,
+      "raw_transcription": "the so git handles errors by",
+      "cleaned_transcription": "The Git handles errors by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 177,
+      "raw_transcription": "it's important to build the best case. it's important to build the best case. it's important to build the best case. it's important to build the best case.",
+      "cleaned_transcription": "It's important to build the best case.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 178,
+      "raw_transcription": "the api allows allows allows us us us us to search search search quickly",
+      "cleaned_transcription": "The API allows us to search quickly.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 179,
+      "raw_transcription": "we implement the array using",
+      "cleaned_transcription": "We implement the array using.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "array"
+    },
+    {
+      "id": 180,
+      "raw_transcription": "we optimize the containerization for",
+      "cleaned_transcription": "We optimize the containerization for.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "containerization"
+    },
+    {
+      "id": 181,
+      "raw_transcription": "we optimize the space complexity by processing",
+      "cleaned_transcription": "We optimize the space complexity by processing.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 182,
+      "raw_transcription": "we uh test so test ah the iterator with",
+      "cleaned_transcription": "We test the iterator with.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "iterator"
+    },
+    {
+      "id": 183,
+      "raw_transcription": "the sorting algorithm algorithm algorithm algorithm hash the the data data efficiently",
+      "cleaned_transcription": "The sorting algorithm hash the data efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 184,
+      "raw_transcription": "the the debugger debugger debugger handles handles like handles errors ah by",
+      "cleaned_transcription": "The debugger handles errors by.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "debugger"
+    },
+    {
+      "id": 185,
+      "raw_transcription": "the concept behind decrypt the average case. the concept behind decrypt the average case. the concept behind decrypt the average case.",
+      "cleaned_transcription": "The concept behind decrypt the average case.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "average case"
+    },
+    {
+      "id": 186,
+      "raw_transcription": "the software software software architecture is is is is used to debug information",
+      "cleaned_transcription": "The software architecture is used to debug information.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "software architecture"
+    },
+    {
+      "id": 187,
+      "raw_transcription": "the trie has time time complexity of",
+      "cleaned_transcription": "The trie has time complexity of.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "trie"
+    },
+    {
+      "id": 188,
+      "raw_transcription": "uh the object-oriented programming create efficiently",
+      "cleaned_transcription": "The object-oriented programming create efficiently.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 189,
+      "raw_transcription": "the iterator works by iterating. the iterator works by iterating.",
+      "cleaned_transcription": "The iterator works by iterating.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "iterator"
+    },
+    {
+      "id": 190,
+      "raw_transcription": "the time complexity allows us to convert quickly. the time complexity allows us to convert quickly. the time complexity allows us to convert quickly.",
+      "cleaned_transcription": "The time complexity allows us to convert quickly.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 191,
+      "raw_transcription": "we implement the trie using. we implement the trie using.",
+      "cleaned_transcription": "We implement the trie using.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "trie"
+    },
+    {
+      "id": 192,
+      "raw_transcription": "the algorithm works works by iterating",
+      "cleaned_transcription": "The algorithm works by iterating.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 193,
+      "raw_transcription": "we we we we optimize optimize optimize optimize the stack for",
+      "cleaned_transcription": "We optimize the stack for.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "stack"
+    },
+    {
+      "id": 194,
+      "raw_transcription": "t-t-the heap works by iterating",
+      "cleaned_transcription": "The heap works by iterating.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "heap"
+    },
+    {
+      "id": 195,
+      "raw_transcription": "we optimize optimize optimize optimize the the the the array for for",
+      "cleaned_transcription": "We optimize the array for.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "array"
+    },
+    {
+      "id": 196,
+      "raw_transcription": "to to to to authenticate authenticate the graph we we we we must",
+      "cleaned_transcription": "To authenticate the graph we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 197,
+      "raw_transcription": "th-th-the procedural programming allows us to iterate quickly",
+      "cleaned_transcription": "The procedural programming allows us to iterate quickly.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 198,
+      "raw_transcription": "like we optimize so the space er complexity for",
+      "cleaned_transcription": "We optimize the space complexity for.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 199,
+      "raw_transcription": "we optimize the ci/cd well well so for",
+      "cleaned_transcription": "We optimize the CI/CD for.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 200,
+      "raw_transcription": "we test the searching algorithm with. we test the searching algorithm with.",
+      "cleaned_transcription": "We test the searching algorithm with.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 201,
+      "raw_transcription": "the distributed distributed system sort sort so efficiently",
+      "cleaned_transcription": "The distributed system sort efficiently.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "distributed system"
+    },
+    {
+      "id": 202,
+      "raw_transcription": "th-th-the recursive algorithm helps us encrypt better",
+      "cleaned_transcription": "The recursive algorithm helps us encrypt better.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 203,
+      "raw_transcription": "the recursive algorithm requires us to um er",
+      "cleaned_transcription": "The recursive algorithm requires us to.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 204,
+      "raw_transcription": "we er can test so you know using the hash table",
+      "cleaned_transcription": "We can test using the hash table.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 205,
+      "raw_transcription": "the backtracking uses space well complexity you know",
+      "cleaned_transcription": "The backtracking uses space complexity.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "backtracking"
+    },
+    {
+      "id": 206,
+      "raw_transcription": "we we optimize the object-oriented object-oriented object-oriented programming for",
+      "cleaned_transcription": "We optimize the object-oriented programming for.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 207,
+      "raw_transcription": "to verify the the the the parameter we we we must",
+      "cleaned_transcription": "To verify the parameter we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "parameter"
+    },
+    {
+      "id": 208,
+      "raw_transcription": "we test the solid principles with. we test the solid principles with. we test the solid principles with.",
+      "cleaned_transcription": "We test the SOLID principles with.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 209,
+      "raw_transcription": "t-t-t-the big o notation iterate the data efficiently",
+      "cleaned_transcription": "The big O notation iterate the data efficiently.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 210,
+      "raw_transcription": "we so we we implement implement the class uh using",
+      "cleaned_transcription": "We implement the class using.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "class"
+    },
+    {
+      "id": 211,
+      "raw_transcription": "the binary search search search tree tree tree handles errors errors errors errors by",
+      "cleaned_transcription": "The binary search tree handles errors by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "binary search tree"
+    },
+    {
+      "id": 212,
+      "raw_transcription": "one thing thing thing to note create the the the searching searching searching algorithm",
+      "cleaned_transcription": "One thing to note create the searching algorithm.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 213,
+      "raw_transcription": "the er api handles errors so by",
+      "cleaned_transcription": "The API handles errors by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 214,
+      "raw_transcription": "w-w-w-when we design the procedural programming we need",
+      "cleaned_transcription": "When we design the procedural programming we need.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 215,
+      "raw_transcription": "the space complexity complexity uses space complexity",
+      "cleaned_transcription": "The space complexity uses space complexity.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 216,
+      "raw_transcription": "whe-whe-when we compute the generator we need",
+      "cleaned_transcription": "When we compute the generator we need.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "generator"
+    },
+    {
+      "id": 217,
+      "raw_transcription": "the the procedural programming helps us so optimize better",
+      "cleaned_transcription": "The procedural programming helps us optimize better.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 218,
+      "raw_transcription": "t-t-the greedy algorithm can be improved by",
+      "cleaned_transcription": "The greedy algorithm can be improved by.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 219,
+      "raw_transcription": "we convert the decorator by processing. we convert the decorator by processing. we convert the decorator by processing. we convert the decorator by processing.",
+      "cleaned_transcription": "We convert the decorator by processing.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "decorator"
+    },
+    {
+      "id": 220,
+      "raw_transcription": "the object-oriented programming helps so us ah compute well better",
+      "cleaned_transcription": "The object-oriented programming helps us compute better.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 221,
+      "raw_transcription": "the solid principles has so time so complexity of",
+      "cleaned_transcription": "The SOLID principles has time complexity of.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 222,
+      "raw_transcription": "t-t-t-the binary search tree can be improved by",
+      "cleaned_transcription": "The binary search tree can be improved by.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "binary search tree"
+    },
+    {
+      "id": 223,
+      "raw_transcription": "t-t-the the uh the er hash table can be be improved improved by",
+      "cleaned_transcription": "The hash table can be improved by.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 224,
+      "raw_transcription": "the recursive algorithm helps us cache better. the recursive algorithm helps us cache better. the recursive algorithm helps us cache better.",
+      "cleaned_transcription": "The recursive algorithm helps us cache better.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 225,
+      "raw_transcription": "t-t-the divide and conquer like works by by by by iterating",
+      "cleaned_transcription": "The divide and conquer works by iterating.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "divide and conquer"
+    },
+    {
+      "id": 226,
+      "raw_transcription": "the algorithm allows us to initialize quickly. the algorithm allows us to initialize quickly. the algorithm allows us to initialize quickly.",
+      "cleaned_transcription": "The algorithm allows us to initialize quickly.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 227,
+      "raw_transcription": "th-th-th-the best case case deploy efficiently like um uh",
+      "cleaned_transcription": "The best case deploy efficiently.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 228,
+      "raw_transcription": "we we we test the functional functional functional programming with with with",
+      "cleaned_transcription": "We test the functional programming with.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "function"
+    },
+    {
+      "id": 229,
+      "raw_transcription": "we process the hash table by by by processing",
+      "cleaned_transcription": "We process the hash table by processing.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 230,
+      "raw_transcription": "we implement the ide using. we implement the ide using. we implement the ide using. we implement the ide using.",
+      "cleaned_transcription": "We implement the IDE using.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 231,
+      "raw_transcription": "the cloud computing is used to iterate information. the cloud computing is used to iterate information.",
+      "cleaned_transcription": "The cloud computing is used to iterate information.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "cloud computing"
+    },
+    {
+      "id": 232,
+      "raw_transcription": "the main idea idea idea iterate iterate iterate the api",
+      "cleaned_transcription": "The main idea iterate the API.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 233,
+      "raw_transcription": "th-th-th-the well recursive recursive algorithm algorithm algorithm um works by iterating so iterating iterating",
+      "cleaned_transcription": "The recursive algorithm works by iterating.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 234,
+      "raw_transcription": "to search search search search the the the ci/cd ci/cd we must",
+      "cleaned_transcription": "To search the CI/CD we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 235,
+      "raw_transcription": "the object-oriented programming processes processes processes data by",
+      "cleaned_transcription": "The object-oriented programming processes data by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 236,
+      "raw_transcription": "the testing testing framework framework uses space complexity",
+      "cleaned_transcription": "The testing framework uses space complexity.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 237,
+      "raw_transcription": "the the binary tree tree tree processes data by",
+      "cleaned_transcription": "The binary tree processes data by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "binary tree"
+    },
+    {
+      "id": 238,
+      "raw_transcription": "to compute the space complexity ah we must you know",
+      "cleaned_transcription": "To compute the space complexity we must.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 239,
+      "raw_transcription": "w-w-when we initialize the graphql we need",
+      "cleaned_transcription": "When we initialize the GraphQL we need.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 240,
+      "raw_transcription": "we implement the big o notation using. we implement the big o notation using. we implement the big o notation using.",
+      "cleaned_transcription": "We implement the big O notation using.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 241,
+      "raw_transcription": "the optimization optimization well you know optimization can be improved by",
+      "cleaned_transcription": "The optimization can be improved by.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "optimization"
+    },
+    {
+      "id": 242,
+      "raw_transcription": "lik-lik-lik-like well the best best best case requires requires requires us to to",
+      "cleaned_transcription": "The best case requires us to.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 243,
+      "raw_transcription": "the ide ide handles handles errors errors by",
+      "cleaned_transcription": "The IDE handles errors by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 244,
+      "raw_transcription": "to like design the software software architecture we so must must must",
+      "cleaned_transcription": "To design the software architecture we must.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "software architecture"
+    },
+    {
+      "id": 245,
+      "raw_transcription": "the divide and conquer requires requires us to",
+      "cleaned_transcription": "The divide and conquer requires us to.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "divide and conquer"
+    },
+    {
+      "id": 246,
+      "raw_transcription": "like the class has time complexity of",
+      "cleaned_transcription": "The class has time complexity of.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "class"
+    },
+    {
+      "id": 247,
+      "raw_transcription": "the microservices has time complexity of. the microservices has time complexity of. the microservices has time complexity of. the microservices has time complexity of.",
+      "cleaned_transcription": "The microservices has time complexity of.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 248,
+      "raw_transcription": "we test the lambda with",
+      "cleaned_transcription": "We test the lambda with.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "lambda"
+    },
+    {
+      "id": 249,
+      "raw_transcription": "t-t-the algorithm uses space complexity",
+      "cleaned_transcription": "The algorithm uses space complexity.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 250,
+      "raw_transcription": "the heap initialize efficiently. the heap initialize efficiently.",
+      "cleaned_transcription": "The heap initialize efficiently.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "heap"
+    },
+    {
+      "id": 251,
+      "raw_transcription": "when we search the you know ci/cd we so need uh",
+      "cleaned_transcription": "When we search the CI/CD we need.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 252,
+      "raw_transcription": "the greedy algorithm handles handles handles errors by",
+      "cleaned_transcription": "The greedy algorithm handles errors by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 253,
+      "raw_transcription": "the big o notation sort the data efficiently. the big o notation sort the data efficiently. the big o notation sort the data efficiently.",
+      "cleaned_transcription": "The big O notation sort the data efficiently.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 254,
+      "raw_transcription": "to search the time complexity complexity complexity complexity we must",
+      "cleaned_transcription": "To search the time complexity we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 255,
+      "raw_transcription": "the the solid solid principles works by iterating er ah",
+      "cleaned_transcription": "The SOLID principles works by iterating.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 256,
+      "raw_transcription": "we calculate the interpreter by by by processing",
+      "cleaned_transcription": "We calculate the interpreter by processing.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "interpreter"
+    },
+    {
+      "id": 257,
+      "raw_transcription": "th-th-the greedy algorithm debug the data efficiently",
+      "cleaned_transcription": "The greedy algorithm debug the data efficiently.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 258,
+      "raw_transcription": "to search the docker we must. to search the docker we must.",
+      "cleaned_transcription": "To search the Docker we must.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 259,
+      "raw_transcription": "the binary search search search search tree uses space complexity complexity so complexity complexity",
+      "cleaned_transcription": "The binary search tree uses space complexity.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "binary search tree"
+    },
+    {
+      "id": 260,
+      "raw_transcription": "the the the the exception exception exception can be improved improved improved improved by",
+      "cleaned_transcription": "The exception can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "exception"
+    },
+    {
+      "id": 261,
+      "raw_transcription": "we implement the big o notation using",
+      "cleaned_transcription": "We implement the big O notation using.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 262,
+      "raw_transcription": "the hash table can be improved by. the hash table can be improved by.",
+      "cleaned_transcription": "The hash table can be improved by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 263,
+      "raw_transcription": "the you know binary binary search tree so create the uh data efficiently",
+      "cleaned_transcription": "The binary search tree create the data efficiently.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "binary search tree"
+    },
+    {
+      "id": 264,
+      "raw_transcription": "we optimize optimize optimize optimize the database for",
+      "cleaned_transcription": "We optimize the database for.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "database"
+    },
+    {
+      "id": 265,
+      "raw_transcription": "the solid principles allows us to authenticate er quickly",
+      "cleaned_transcription": "The SOLID principles allows us to authenticate quickly.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 266,
+      "raw_transcription": "to um er like optimize the interpreter we must",
+      "cleaned_transcription": "To optimize the interpreter we must.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "interpreter"
+    },
+    {
+      "id": 267,
+      "raw_transcription": "the the the operating operating system search efficiently",
+      "cleaned_transcription": "The operating system search efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "operating system"
+    },
+    {
+      "id": 268,
+      "raw_transcription": "the er time complexity can um be improved by like",
+      "cleaned_transcription": "The time complexity can be improved by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 269,
+      "raw_transcription": "the the binary tree tree can be improved by",
+      "cleaned_transcription": "The binary tree can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "binary tree"
+    },
+    {
+      "id": 270,
+      "raw_transcription": "we have to validate the er linked list",
+      "cleaned_transcription": "We have to validate the linked list.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "linked list"
+    },
+    {
+      "id": 271,
+      "raw_transcription": "er we can authenticate using the so graph",
+      "cleaned_transcription": "We can authenticate using the graph.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 272,
+      "raw_transcription": "the uh class processes um data uh by",
+      "cleaned_transcription": "The class processes data by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "class"
+    },
+    {
+      "id": 273,
+      "raw_transcription": "the backtracking uses uses space complexity complexity complexity",
+      "cleaned_transcription": "The backtracking uses space complexity.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "backtracking"
+    },
+    {
+      "id": 274,
+      "raw_transcription": "the the generator generator generator processes data by by by",
+      "cleaned_transcription": "The generator processes data by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "generator"
+    },
+    {
+      "id": 275,
+      "raw_transcription": "the dynamic programming processes data by so",
+      "cleaned_transcription": "The dynamic programming processes data by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "dynamic programming"
+    },
+    {
+      "id": 276,
+      "raw_transcription": "we implement the kubernetes using. we implement the kubernetes using.",
+      "cleaned_transcription": "We implement the Kubernetes using.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 277,
+      "raw_transcription": "t-t-the kubernetes is used to initialize information",
+      "cleaned_transcription": "The Kubernetes is used to initialize information.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 278,
+      "raw_transcription": "t-t-t-the testing framework has time complexity of",
+      "cleaned_transcription": "The testing framework has time complexity of.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 279,
+      "raw_transcription": "whe-whe-whe-when we debug the procedural programming we need",
+      "cleaned_transcription": "When we debug the procedural programming we need.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 280,
+      "raw_transcription": "the linked list validate efficiently. the linked list validate efficiently. the linked list validate efficiently. the linked list validate efficiently.",
+      "cleaned_transcription": "The linked list validate efficiently.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "linked list"
+    },
+    {
+      "id": 281,
+      "raw_transcription": "um the space complexity uh iterate efficiently you know",
+      "cleaned_transcription": "The space complexity iterate efficiently.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 282,
+      "raw_transcription": "the return value handles errors by. the return value handles errors by. the return value handles errors by. the return value handles errors by.",
+      "cleaned_transcription": "The return value handles errors by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "return value"
+    },
+    {
+      "id": 283,
+      "raw_transcription": "the the variable variable variable allows us to to encrypt quickly",
+      "cleaned_transcription": "The variable allows us to encrypt quickly.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "variable"
+    },
+    {
+      "id": 284,
+      "raw_transcription": "we like test the um the the the software architecture architecture with",
+      "cleaned_transcription": "We test the software architecture with.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "software architecture"
+    },
+    {
+      "id": 285,
+      "raw_transcription": "yo-yo-you know we can can can analyze using using well using using the greedy algorithm er",
+      "cleaned_transcription": "We can analyze using the greedy algorithm.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 286,
+      "raw_transcription": "the the dynamic programming has time complexity of",
+      "cleaned_transcription": "The dynamic programming has time complexity of.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "dynamic programming"
+    },
+    {
+      "id": 287,
+      "raw_transcription": "the microservices processes data by. the microservices processes data by.",
+      "cleaned_transcription": "The microservices processes data by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "microservices"
+    },
+    {
+      "id": 288,
+      "raw_transcription": "to calculate the hash hash hash hash table we we we must",
+      "cleaned_transcription": "To calculate the hash table we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 289,
+      "raw_transcription": "we optimize the ci/cd for",
+      "cleaned_transcription": "We optimize the CI/CD for.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 290,
+      "raw_transcription": "what this does search the design patterns. what this does search the design patterns. what this does search the design patterns.",
+      "cleaned_transcription": "What this does search the design patterns.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "design patterns"
+    },
+    {
+      "id": 291,
+      "raw_transcription": "the searching algorithm transform efficiently efficiently",
+      "cleaned_transcription": "The searching algorithm transform efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 292,
+      "raw_transcription": "the uh optimization can be improved by",
+      "cleaned_transcription": "The optimization can be improved by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "optimization"
+    },
+    {
+      "id": 293,
+      "raw_transcription": "the er like algorithm handles errors by",
+      "cleaned_transcription": "The algorithm handles errors by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 294,
+      "raw_transcription": "let me explain verify the api. let me explain verify the api.",
+      "cleaned_transcription": "Let me explain verify the API.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 295,
+      "raw_transcription": "the docker can be improved by. the docker can be improved by.",
+      "cleaned_transcription": "The Docker can be improved by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 296,
+      "raw_transcription": "the the the git helps us us deploy better better better",
+      "cleaned_transcription": "The Git helps us deploy better.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 297,
+      "raw_transcription": "the big o notation processes data by. the big o notation processes data by. the big o notation processes data by.",
+      "cleaned_transcription": "The big O notation processes data by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 298,
+      "raw_transcription": "we can analyze using the heap",
+      "cleaned_transcription": "We can analyze using the heap.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "heap"
+    },
+    {
+      "id": 299,
+      "raw_transcription": "th-th-th-the asymptotic analysis transform efficiently",
+      "cleaned_transcription": "The asymptotic analysis transform efficiently.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "asymptotic analysis"
+    },
+    {
+      "id": 300,
+      "raw_transcription": "the software software architecture search er the data efficiently like efficiently",
+      "cleaned_transcription": "The software architecture search the data efficiently.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "software architecture"
+    },
+    {
+      "id": 301,
+      "raw_transcription": "we test the linked list with",
+      "cleaned_transcription": "We test the linked list with.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "linked list"
+    },
+    {
+      "id": 302,
+      "raw_transcription": "we um ah um implement the dynamic programming using",
+      "cleaned_transcription": "We implement the dynamic programming using.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "dynamic programming"
+    },
+    {
+      "id": 303,
+      "raw_transcription": "the greedy algorithm uses well space complexity so",
+      "cleaned_transcription": "The greedy algorithm uses space complexity.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 304,
+      "raw_transcription": "the best case helps us us us us hash better",
+      "cleaned_transcription": "The best case helps us hash better.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 305,
+      "raw_transcription": "we optimize the git for. we optimize the git for. we optimize the git for.",
+      "cleaned_transcription": "We optimize the Git for.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 306,
+      "raw_transcription": "we can transform transform transform using the return value value value value",
+      "cleaned_transcription": "We can transform using the return value.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "return value"
+    },
+    {
+      "id": 307,
+      "raw_transcription": "the binary tree works by iterating. the binary tree works by iterating. the binary tree works by iterating.",
+      "cleaned_transcription": "The binary tree works by iterating.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "binary tree"
+    },
+    {
+      "id": 308,
+      "raw_transcription": "we can sort using the database",
+      "cleaned_transcription": "We can sort using the database.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "database"
+    },
+    {
+      "id": 309,
+      "raw_transcription": "th-th-th-the greedy algorithm traverse the data efficiently",
+      "cleaned_transcription": "The greedy algorithm traverse the data efficiently.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 310,
+      "raw_transcription": "we optimize the function by processing. we optimize the function by processing. we optimize the function by processing. we optimize the function by processing.",
+      "cleaned_transcription": "We optimize the function by processing.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "function"
+    },
+    {
+      "id": 311,
+      "raw_transcription": "we test the space complexity with",
+      "cleaned_transcription": "We test the space complexity with.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 312,
+      "raw_transcription": "the heap handles errors by. the heap handles errors by. the heap handles errors by. the heap handles errors by.",
+      "cleaned_transcription": "The heap handles errors by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "heap"
+    },
+    {
+      "id": 313,
+      "raw_transcription": "the big o you know notation handles well errors by",
+      "cleaned_transcription": "The big O notation handles errors by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 314,
+      "raw_transcription": "the um docker can be improved by",
+      "cleaned_transcription": "The Docker can be improved by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 315,
+      "raw_transcription": "the database uses space space complexity",
+      "cleaned_transcription": "The database uses space complexity.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 316,
+      "raw_transcription": "we test the the compiler compiler compiler with",
+      "cleaned_transcription": "We test the compiler with.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "compiler"
+    },
+    {
+      "id": 317,
+      "raw_transcription": "the graph decrypt er efficiently",
+      "cleaned_transcription": "The graph decrypt efficiently.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 318,
+      "raw_transcription": "the debugger requires us to. the debugger requires us to. the debugger requires us to. the debugger requires us to.",
+      "cleaned_transcription": "The debugger requires us to.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "debugger"
+    },
+    {
+      "id": 319,
+      "raw_transcription": "when like um we sort the exception we uh need",
+      "cleaned_transcription": "When we sort the exception we need.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "exception"
+    },
+    {
+      "id": 320,
+      "raw_transcription": "we need need need to to to to design design the backtracking",
+      "cleaned_transcription": "We need to design the backtracking.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "backtracking"
+    },
+    {
+      "id": 321,
+      "raw_transcription": "the exception exception exception works by iterating",
+      "cleaned_transcription": "The exception works by iterating.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "exception"
+    },
+    {
+      "id": 322,
+      "raw_transcription": "the asymptotic analysis uses space you know well complexity",
+      "cleaned_transcription": "The asymptotic analysis uses space complexity.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 323,
+      "raw_transcription": "the algorithm helps us optimize better better better",
+      "cleaned_transcription": "The algorithm helps us optimize better.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 324,
+      "raw_transcription": "um we test the space complexity with",
+      "cleaned_transcription": "We test the space complexity with.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 325,
+      "raw_transcription": "we can can can test using the the array",
+      "cleaned_transcription": "We can test using the array.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "array"
+    },
+    {
+      "id": 326,
+      "raw_transcription": "we optimize optimize optimize optimize the stack for",
+      "cleaned_transcription": "We optimize the stack for.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "stack"
+    },
+    {
+      "id": 327,
+      "raw_transcription": "t-t-t-the like graphql graphql uh graphql handles errors by",
+      "cleaned_transcription": "The GraphQL handles errors by.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 328,
+      "raw_transcription": "when we design design design the optimization we we need",
+      "cleaned_transcription": "When we design the optimization we need.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "optimization"
+    },
+    {
+      "id": 329,
+      "raw_transcription": "we test the trie so well with",
+      "cleaned_transcription": "We test the trie with.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "trie"
+    },
+    {
+      "id": 330,
+      "raw_transcription": "to search the git we must. to search the git we must. to search the git we must. to search the git we must.",
+      "cleaned_transcription": "To search the Git we must.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 331,
+      "raw_transcription": "when we we we we calculate the kubernetes we we we need",
+      "cleaned_transcription": "When we calculate the Kubernetes we need.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 332,
+      "raw_transcription": "t-t-the linked list handles errors by",
+      "cleaned_transcription": "The linked list handles errors by.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "linked list"
+    },
+    {
+      "id": 333,
+      "raw_transcription": "the linked list is used to encrypt information information",
+      "cleaned_transcription": "The linked list is used to encrypt information.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "linked list"
+    },
+    {
+      "id": 334,
+      "raw_transcription": "to iterate the software architecture we must. to iterate the software architecture we must. to iterate the software architecture we must.",
+      "cleaned_transcription": "To iterate the software architecture we must.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "software architecture"
+    },
+    {
+      "id": 335,
+      "raw_transcription": "the divide and conquer conquer conquer can be be be be improved by",
+      "cleaned_transcription": "The divide and conquer can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "divide and conquer"
+    },
+    {
+      "id": 336,
+      "raw_transcription": "what happens is design the ide. what happens is design the ide. what happens is design the ide. what happens is design the ide.",
+      "cleaned_transcription": "What happens is design the IDE.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 337,
+      "raw_transcription": "the decorator works by iterating. the decorator works by iterating. the decorator works by iterating.",
+      "cleaned_transcription": "The decorator works by iterating.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "decorator"
+    },
+    {
+      "id": 338,
+      "raw_transcription": "the algorithm has time complexity of. the algorithm has time complexity of.",
+      "cleaned_transcription": "The algorithm has time complexity of.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 339,
+      "raw_transcription": "the method method can be be be improved by by by",
+      "cleaned_transcription": "The method can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "method"
+    },
+    {
+      "id": 340,
+      "raw_transcription": "the the the the ide ide ide ide implement efficiently efficiently efficiently",
+      "cleaned_transcription": "The IDE implement efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 341,
+      "raw_transcription": "the database processes data by. the database processes data by. the database processes data by. the database processes data by.",
+      "cleaned_transcription": "The database processes data by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "database"
+    },
+    {
+      "id": 342,
+      "raw_transcription": "the graphql processes processes data by",
+      "cleaned_transcription": "The GraphQL processes data by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 343,
+      "raw_transcription": "uh we implement you know the divide and conquer using",
+      "cleaned_transcription": "We implement the divide and conquer using.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "divide and conquer"
+    },
+    {
+      "id": 344,
+      "raw_transcription": "the ah debugger is used to sort information",
+      "cleaned_transcription": "The debugger is used to sort information.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "debugger"
+    },
+    {
+      "id": 345,
+      "raw_transcription": "the the the the procedural programming develop the data efficiently",
+      "cleaned_transcription": "The procedural programming develop the data efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 346,
+      "raw_transcription": "you know well er the generator handles errors by",
+      "cleaned_transcription": "The generator handles errors by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "generator"
+    },
+    {
+      "id": 347,
+      "raw_transcription": "to to to design the method er um we we ah we we must",
+      "cleaned_transcription": "To design the method we must.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "method"
+    },
+    {
+      "id": 348,
+      "raw_transcription": "we test the exception with um",
+      "cleaned_transcription": "We test the exception with.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "exception"
+    },
+    {
+      "id": 349,
+      "raw_transcription": "the the the interpreter handles errors by by",
+      "cleaned_transcription": "The interpreter handles errors by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "interpreter"
+    },
+    {
+      "id": 350,
+      "raw_transcription": "the best case can be improved by. the best case can be improved by. the best case can be improved by. the best case can be improved by.",
+      "cleaned_transcription": "The best case can be improved by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 351,
+      "raw_transcription": "we we well we we test test test the you know the variable with",
+      "cleaned_transcription": "We test the variable with.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "variable"
+    },
+    {
+      "id": 352,
+      "raw_transcription": "when when when when we transform the the the the docker we need",
+      "cleaned_transcription": "When we transform the Docker we need.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 353,
+      "raw_transcription": "whe-whe-when we convert the recursive algorithm we need",
+      "cleaned_transcription": "When we convert the recursive algorithm we need.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 354,
+      "raw_transcription": "er the time complexity processes data by",
+      "cleaned_transcription": "The time complexity processes data by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 355,
+      "raw_transcription": "to traverse the space complexity we must. to traverse the space complexity we must.",
+      "cleaned_transcription": "To traverse the space complexity we must.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 356,
+      "raw_transcription": "we implement implement implement the optimization using",
+      "cleaned_transcription": "We implement the optimization using.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "optimization"
+    },
+    {
+      "id": 357,
+      "raw_transcription": "we verify the best case by processing",
+      "cleaned_transcription": "We verify the best case by processing.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 358,
+      "raw_transcription": "whe-whe-whe-when um we we cache the so recursive algorithm we need",
+      "cleaned_transcription": "When we cache the recursive algorithm we need.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 359,
+      "raw_transcription": "you know the rest api requires us to",
+      "cleaned_transcription": "The REST API requires us to.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 360,
+      "raw_transcription": "we implement the microservices microservices microservices microservices using",
+      "cleaned_transcription": "We implement the microservices using.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "microservices"
+    },
+    {
+      "id": 361,
+      "raw_transcription": "so the containerization handles errors by",
+      "cleaned_transcription": "The containerization handles errors by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "containerization"
+    },
+    {
+      "id": 362,
+      "raw_transcription": "we ah test so you know the array with",
+      "cleaned_transcription": "We test the array with.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "array"
+    },
+    {
+      "id": 363,
+      "raw_transcription": "to verify verify verify verify the the the binary tree we we we we must",
+      "cleaned_transcription": "To verify the binary tree we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "binary tree"
+    },
+    {
+      "id": 364,
+      "raw_transcription": "th-th-the procedural programming works by iterating",
+      "cleaned_transcription": "The procedural programming works by iterating.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 365,
+      "raw_transcription": "we uh implement so the best case using you know",
+      "cleaned_transcription": "We implement the best case using.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 366,
+      "raw_transcription": "the heap heap heap uses space complexity complexity complexity complexity",
+      "cleaned_transcription": "The heap uses space complexity.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "heap"
+    },
+    {
+      "id": 367,
+      "raw_transcription": "t-t-the key point iterate the parameter",
+      "cleaned_transcription": "The key point iterate the parameter.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "parameter"
+    },
+    {
+      "id": 368,
+      "raw_transcription": "we test the searching algorithm with. we test the searching algorithm with. we test the searching algorithm with.",
+      "cleaned_transcription": "We test the searching algorithm with.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 369,
+      "raw_transcription": "we create create create the hash table by by by by processing",
+      "cleaned_transcription": "We create the hash table by processing.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 370,
+      "raw_transcription": "we can encrypt using the procedural programming",
+      "cleaned_transcription": "We can encrypt using the procedural programming.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 371,
+      "raw_transcription": "uh to encrypt the uh api we must",
+      "cleaned_transcription": "To encrypt the API we must.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 372,
+      "raw_transcription": "we we test test test the optimization with with with with",
+      "cleaned_transcription": "We test the optimization with.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "optimization"
+    },
+    {
+      "id": 373,
+      "raw_transcription": "we implement the the the return value using",
+      "cleaned_transcription": "We implement the return value using.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "return value"
+    },
+    {
+      "id": 374,
+      "raw_transcription": "we traverse the space complexity by processing processing processing",
+      "cleaned_transcription": "We traverse the space complexity by processing.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 375,
+      "raw_transcription": "we implement the array using. we implement the array using.",
+      "cleaned_transcription": "We implement the array using.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "array"
+    },
+    {
+      "id": 376,
+      "raw_transcription": "the exception requires us to. the exception requires us to. the exception requires us to.",
+      "cleaned_transcription": "The exception requires us to.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "exception"
+    },
+    {
+      "id": 377,
+      "raw_transcription": "the lambda processes processes data by by by by",
+      "cleaned_transcription": "The lambda processes data by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "lambda"
+    },
+    {
+      "id": 378,
+      "raw_transcription": "the graphql well configure ah so the data efficiently",
+      "cleaned_transcription": "The GraphQL configure the data efficiently.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 379,
+      "raw_transcription": "the the procedural programming uses uses uses uses space complexity complexity",
+      "cleaned_transcription": "The procedural programming uses space complexity.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 380,
+      "raw_transcription": "we we we well we so test the the the worst worst worst case with",
+      "cleaned_transcription": "We test the worst case with.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "worst case"
+    },
+    {
+      "id": 381,
+      "raw_transcription": "the procedural programming can be improved by. the procedural programming can be improved by. the procedural programming can be improved by.",
+      "cleaned_transcription": "The procedural programming can be improved by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 382,
+      "raw_transcription": "like the design patterns handles errors by er",
+      "cleaned_transcription": "The design patterns handles errors by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "design patterns"
+    },
+    {
+      "id": 383,
+      "raw_transcription": "the uh dynamic programming processes data like by",
+      "cleaned_transcription": "The dynamic programming processes data by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "dynamic programming"
+    },
+    {
+      "id": 384,
+      "raw_transcription": "we optimize the backtracking for",
+      "cleaned_transcription": "We optimize the backtracking for.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "backtracking"
+    },
+    {
+      "id": 385,
+      "raw_transcription": "the distributed distributed distributed system can be improved by by by",
+      "cleaned_transcription": "The distributed system can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "distributed system"
+    },
+    {
+      "id": 386,
+      "raw_transcription": "the rest api uses space complexity. the rest api uses space complexity. the rest api uses space complexity. the rest api uses space complexity.",
+      "cleaned_transcription": "The REST API uses space complexity.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 387,
+      "raw_transcription": "the the object-oriented programming has time complexity of",
+      "cleaned_transcription": "The object-oriented programming has time complexity of.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 388,
+      "raw_transcription": "we can process using the containerization",
+      "cleaned_transcription": "We can process using the containerization.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "containerization"
+    },
+    {
+      "id": 389,
+      "raw_transcription": "we optimize the solid principles for. we optimize the solid principles for. we optimize the solid principles for.",
+      "cleaned_transcription": "We optimize the SOLID principles for.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 390,
+      "raw_transcription": "we optimize optimize optimize optimize the recursive algorithm for",
+      "cleaned_transcription": "We optimize the recursive algorithm for.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 391,
+      "raw_transcription": "we can deploy the graph. we can deploy the graph.",
+      "cleaned_transcription": "We can deploy the graph.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 392,
+      "raw_transcription": "the optimization uses space space space complexity complexity complexity",
+      "cleaned_transcription": "The optimization uses space complexity.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 393,
+      "raw_transcription": "to hash hash hash the the lambda lambda lambda we must",
+      "cleaned_transcription": "To hash the lambda we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "lambda"
+    },
+    {
+      "id": 394,
+      "raw_transcription": "we test the asymptotic analysis with. we test the asymptotic analysis with.",
+      "cleaned_transcription": "We test the asymptotic analysis with.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "asymptotic analysis"
+    },
+    {
+      "id": 395,
+      "raw_transcription": "the kubernetes kubernetes kubernetes allows us to to to to verify verify verify verify quickly",
+      "cleaned_transcription": "The Kubernetes allows us to verify quickly.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 396,
+      "raw_transcription": "we implement implement implement the the the the trie trie trie trie using",
+      "cleaned_transcription": "We implement the trie using.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "trie"
+    },
+    {
+      "id": 397,
+      "raw_transcription": "to do this er uh encrypt the database",
+      "cleaned_transcription": "To do this encrypt the database.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "database"
+    },
+    {
+      "id": 398,
+      "raw_transcription": "we test test test test the the the the debugger with",
+      "cleaned_transcription": "We test the debugger with.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "debugger"
+    },
+    {
+      "id": 399,
+      "raw_transcription": "the procedural programming is used to create create information",
+      "cleaned_transcription": "The procedural programming is used to create information.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 400,
+      "raw_transcription": "the interpreter interpreter interpreter interpreter works by iterating",
+      "cleaned_transcription": "The interpreter works by iterating.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "interpreter"
+    },
+    {
+      "id": 401,
+      "raw_transcription": "when we configure the interpreter we need. when we configure the interpreter we need.",
+      "cleaned_transcription": "When we configure the interpreter we need.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "interpreter"
+    },
+    {
+      "id": 402,
+      "raw_transcription": "this solution traverse the debugger. this solution traverse the debugger. this solution traverse the debugger. this solution traverse the debugger.",
+      "cleaned_transcription": "This solution traverse the debugger.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "debugger"
+    },
+    {
+      "id": 403,
+      "raw_transcription": "we optimize the binary search tree for. we optimize the binary search tree for. we optimize the binary search tree for. we optimize the binary search tree for.",
+      "cleaned_transcription": "We optimize the binary search tree for.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "binary search tree"
+    },
+    {
+      "id": 404,
+      "raw_transcription": "the ide is used to compute information. the ide is used to compute information. the ide is used to compute information.",
+      "cleaned_transcription": "The IDE is used to compute information.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 405,
+      "raw_transcription": "the method helps us initialize better. the method helps us initialize better. the method helps us initialize better. the method helps us initialize better.",
+      "cleaned_transcription": "The method helps us initialize better.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "method"
+    },
+    {
+      "id": 406,
+      "raw_transcription": "we test the functional functional functional functional programming with with with",
+      "cleaned_transcription": "We test the functional programming with.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "function"
+    },
+    {
+      "id": 407,
+      "raw_transcription": "so the compiler allows us you know to to to convert convert convert quickly",
+      "cleaned_transcription": "The compiler allows us to convert quickly.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "compiler"
+    },
+    {
+      "id": 408,
+      "raw_transcription": "the best best case has time complexity of",
+      "cleaned_transcription": "The best case has time complexity of.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 409,
+      "raw_transcription": "th-th-the decorator uses space complexity",
+      "cleaned_transcription": "The decorator uses space complexity.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "decorator"
+    },
+    {
+      "id": 410,
+      "raw_transcription": "the procedural programming has has time complexity of",
+      "cleaned_transcription": "The procedural programming has time complexity of.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 411,
+      "raw_transcription": "the class you know works by iterating",
+      "cleaned_transcription": "The class works by iterating.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "class"
+    },
+    {
+      "id": 412,
+      "raw_transcription": "the big o notation notation notation helps helps helps helps us design better",
+      "cleaned_transcription": "The big O notation helps us design better.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 413,
+      "raw_transcription": "to sort sort sort the solid principles we must",
+      "cleaned_transcription": "To sort the SOLID principles we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 414,
+      "raw_transcription": "we so uh can well search using the iterator",
+      "cleaned_transcription": "We can search using the iterator.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "iterator"
+    },
+    {
+      "id": 415,
+      "raw_transcription": "we can test using the ci/cd",
+      "cleaned_transcription": "We can test using the CI/CD.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 416,
+      "raw_transcription": "it's important to verify the sorting algorithm. it's important to verify the sorting algorithm. it's important to verify the sorting algorithm.",
+      "cleaned_transcription": "It's important to verify the sorting algorithm.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 417,
+      "raw_transcription": "the binary tree has time complexity of. the binary tree has time complexity of. the binary tree has time complexity of. the binary tree has time complexity of.",
+      "cleaned_transcription": "The binary tree has time complexity of.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "binary tree"
+    },
+    {
+      "id": 418,
+      "raw_transcription": "we optimize the searching algorithm ah well ah for",
+      "cleaned_transcription": "We optimize the searching algorithm for.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 419,
+      "raw_transcription": "the object-oriented programming is used to authenticate information information information",
+      "cleaned_transcription": "The object-oriented programming is used to authenticate information.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 420,
+      "raw_transcription": "to analyze the worst case we must. to analyze the worst case we must. to analyze the worst case we must.",
+      "cleaned_transcription": "To analyze the worst case we must.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "worst case"
+    },
+    {
+      "id": 421,
+      "raw_transcription": "the searching algorithm is used to convert information information",
+      "cleaned_transcription": "The searching algorithm is used to convert information.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 422,
+      "raw_transcription": "we can validate using using using using the stack",
+      "cleaned_transcription": "We can validate using the stack.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "stack"
+    },
+    {
+      "id": 423,
+      "raw_transcription": "th-th-th-the docker has time complexity of",
+      "cleaned_transcription": "The Docker has time complexity of.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 424,
+      "raw_transcription": "the microservices handles errors by. the microservices handles errors by.",
+      "cleaned_transcription": "The microservices handles errors by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "microservices"
+    },
+    {
+      "id": 425,
+      "raw_transcription": "th-th-the distributed system processes data by",
+      "cleaned_transcription": "The distributed system processes data by.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "distributed system"
+    },
+    {
+      "id": 426,
+      "raw_transcription": "the ci/cd ci/cd ci/cd ci/cd can be be be improved improved improved improved by",
+      "cleaned_transcription": "The CI/CD can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 427,
+      "raw_transcription": "to implement the divide you know well and conquer we must er",
+      "cleaned_transcription": "To implement the divide and conquer we must.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "divide and conquer"
+    },
+    {
+      "id": 428,
+      "raw_transcription": "the asymptotic analysis processes data by. the asymptotic analysis processes data by.",
+      "cleaned_transcription": "The asymptotic analysis processes data by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "asymptotic analysis"
+    },
+    {
+      "id": 429,
+      "raw_transcription": "th-th-the algorithm allows us to create quickly",
+      "cleaned_transcription": "The algorithm allows us to create quickly.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 430,
+      "raw_transcription": "the ci/cd allows us so to iterate quickly",
+      "cleaned_transcription": "The CI/CD allows us to iterate quickly.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 431,
+      "raw_transcription": "the the the dynamic programming uses space space space complexity",
+      "cleaned_transcription": "The dynamic programming uses space complexity.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "dynamic programming"
+    },
+    {
+      "id": 432,
+      "raw_transcription": "we implement the best well ah case using",
+      "cleaned_transcription": "We implement the best case using.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 433,
+      "raw_transcription": "we test the object-oriented programming with. we test the object-oriented programming with.",
+      "cleaned_transcription": "We test the object-oriented programming with.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 434,
+      "raw_transcription": "we test test test the the average average case with",
+      "cleaned_transcription": "We test the average case with.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "average case"
+    },
+    {
+      "id": 435,
+      "raw_transcription": "we optimize the the the the dynamic dynamic dynamic dynamic programming for for for",
+      "cleaned_transcription": "We optimize the dynamic programming for.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "dynamic programming"
+    },
+    {
+      "id": 436,
+      "raw_transcription": "the the the the divide and conquer can be improved by by by by",
+      "cleaned_transcription": "The divide and conquer can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "divide and conquer"
+    },
+    {
+      "id": 437,
+      "raw_transcription": "it's you know important to so validate the design patterns",
+      "cleaned_transcription": "It's important to validate the design patterns.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "design patterns"
+    },
+    {
+      "id": 438,
+      "raw_transcription": "the return value is used to to to calculate information",
+      "cleaned_transcription": "The return value is used to calculate information.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "return value"
+    },
+    {
+      "id": 439,
+      "raw_transcription": "the trie is used to implement information. the trie is used to implement information. the trie is used to implement information. the trie is used to implement information.",
+      "cleaned_transcription": "The trie is used to implement information.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "trie"
+    },
+    {
+      "id": 440,
+      "raw_transcription": "we optimize the docker for",
+      "cleaned_transcription": "We optimize the Docker for.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 441,
+      "raw_transcription": "th-th-the testing framework handles errors by",
+      "cleaned_transcription": "The testing framework handles errors by.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "testing framework"
+    },
+    {
+      "id": 442,
+      "raw_transcription": "we can can verify using the solid principles",
+      "cleaned_transcription": "We can verify using the SOLID principles.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 443,
+      "raw_transcription": "the average case uses space space space space complexity you know",
+      "cleaned_transcription": "The average case uses space complexity.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 444,
+      "raw_transcription": "to create the graph we must",
+      "cleaned_transcription": "To create the graph we must.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 445,
+      "raw_transcription": "the um functional programming helps ah us build better uh",
+      "cleaned_transcription": "The functional programming helps us build better.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "function"
+    },
+    {
+      "id": 446,
+      "raw_transcription": "we can er analyze using the class er well",
+      "cleaned_transcription": "We can analyze using the class.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "class"
+    },
+    {
+      "id": 447,
+      "raw_transcription": "t-t-t-the testing framework has time complexity of",
+      "cleaned_transcription": "The testing framework has time complexity of.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 448,
+      "raw_transcription": "to authenticate the searching algorithm we must must must must",
+      "cleaned_transcription": "To authenticate the searching algorithm we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 449,
+      "raw_transcription": "the solid principles allows us us us to to to iterate quickly quickly quickly",
+      "cleaned_transcription": "The SOLID principles allows us to iterate quickly.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 450,
+      "raw_transcription": "we traverse the git by processing",
+      "cleaned_transcription": "We traverse the Git by processing.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 451,
+      "raw_transcription": "the kubernetes kubernetes kubernetes kubernetes can be be be be improved by",
+      "cleaned_transcription": "The Kubernetes can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 452,
+      "raw_transcription": "the debugger processes processes processes processes data data data data by by by",
+      "cleaned_transcription": "The debugger processes data by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "debugger"
+    },
+    {
+      "id": 453,
+      "raw_transcription": "the average case handles errors by. the average case handles errors by. the average case handles errors by.",
+      "cleaned_transcription": "The average case handles errors by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "average case"
+    },
+    {
+      "id": 454,
+      "raw_transcription": "the method method method method allows us to design design quickly",
+      "cleaned_transcription": "The method allows us to design quickly.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "method"
+    },
+    {
+      "id": 455,
+      "raw_transcription": "th-th-the best case processes data by",
+      "cleaned_transcription": "The best case processes data by.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 456,
+      "raw_transcription": "we search search the software architecture by processing",
+      "cleaned_transcription": "We search the software architecture by processing.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "software architecture"
+    },
+    {
+      "id": 457,
+      "raw_transcription": "the object-oriented programming handles handles errors by",
+      "cleaned_transcription": "The object-oriented programming handles errors by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 458,
+      "raw_transcription": "we-we-we-well we we we we test the debugger so like with",
+      "cleaned_transcription": "We test the debugger with.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "debugger"
+    },
+    {
+      "id": 459,
+      "raw_transcription": "we implement well the searching you know searching algorithm so using",
+      "cleaned_transcription": "We implement the searching algorithm using.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 460,
+      "raw_transcription": "th-th-the design patterns transform efficiently",
+      "cleaned_transcription": "The design patterns transform efficiently.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "design patterns"
+    },
+    {
+      "id": 461,
+      "raw_transcription": "the heap test the you know data uh efficiently",
+      "cleaned_transcription": "The heap test the data efficiently.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "heap"
+    },
+    {
+      "id": 462,
+      "raw_transcription": "er when we iterate the testing framework er we need you know",
+      "cleaned_transcription": "When we iterate the testing framework we need.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "testing framework"
+    },
+    {
+      "id": 463,
+      "raw_transcription": "we we we implement the the searching searching searching algorithm using",
+      "cleaned_transcription": "We implement the searching algorithm using.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 464,
+      "raw_transcription": "to uh develop uh the binary search tree we must",
+      "cleaned_transcription": "To develop the binary search tree we must.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "binary search tree"
+    },
+    {
+      "id": 465,
+      "raw_transcription": "t-t-the return value processes data by",
+      "cleaned_transcription": "The return value processes data by.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "return value"
+    },
+    {
+      "id": 466,
+      "raw_transcription": "we so optimize the hash table for",
+      "cleaned_transcription": "We optimize the hash table for.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 467,
+      "raw_transcription": "the um hash table processes data by",
+      "cleaned_transcription": "The hash table processes data by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 468,
+      "raw_transcription": "the the graphql uses uses space complexity complexity complexity complexity",
+      "cleaned_transcription": "The GraphQL uses space complexity.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 469,
+      "raw_transcription": "we we we optimize the big o o o notation notation notation er for",
+      "cleaned_transcription": "We optimize the big O notation for.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 470,
+      "raw_transcription": "th-th-the the um solid principles processes processes processes processes um data by",
+      "cleaned_transcription": "The SOLID principles processes data by.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 471,
+      "raw_transcription": "the kubernetes handles errors by. the kubernetes handles errors by.",
+      "cleaned_transcription": "The Kubernetes handles errors by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 472,
+      "raw_transcription": "the the the decorator allows allows allows us to analyze analyze analyze analyze quickly",
+      "cleaned_transcription": "The decorator allows us to analyze quickly.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "decorator"
+    },
+    {
+      "id": 473,
+      "raw_transcription": "the procedural programming uses space complexity. the procedural programming uses space complexity. the procedural programming uses space complexity. the procedural programming uses space complexity.",
+      "cleaned_transcription": "The procedural programming uses space complexity.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 474,
+      "raw_transcription": "we can so well iterate using the er database",
+      "cleaned_transcription": "We can iterate using the database.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "database"
+    },
+    {
+      "id": 475,
+      "raw_transcription": "the the main main main idea test test test the object-oriented programming",
+      "cleaned_transcription": "The main idea test the object-oriented programming.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 476,
+      "raw_transcription": "the ci/cd uses space complexity. the ci/cd uses space complexity. the ci/cd uses space complexity.",
+      "cleaned_transcription": "The CI/CD uses space complexity.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 477,
+      "raw_transcription": "the object-oriented programming requires us to. the object-oriented programming requires us to.",
+      "cleaned_transcription": "The object-oriented programming requires us to.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 478,
+      "raw_transcription": "we test the debugger with",
+      "cleaned_transcription": "We test the debugger with.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "debugger"
+    },
+    {
+      "id": 479,
+      "raw_transcription": "like we can process using the big o notation",
+      "cleaned_transcription": "We can process using the big O notation.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 480,
+      "raw_transcription": "we implement the operating operating operating operating system using",
+      "cleaned_transcription": "We implement the operating system using.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "operating system"
+    },
+    {
+      "id": 481,
+      "raw_transcription": "we optimize the graph for",
+      "cleaned_transcription": "We optimize the graph for.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 482,
+      "raw_transcription": "the docker docker works by by by by iterating iterating",
+      "cleaned_transcription": "The Docker works by iterating.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 483,
+      "raw_transcription": "th-th-th-the class works by iterating",
+      "cleaned_transcription": "The class works by iterating.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "class"
+    },
+    {
+      "id": 484,
+      "raw_transcription": "to to to illustrate validate the cloud cloud cloud computing computing",
+      "cleaned_transcription": "To illustrate validate the cloud computing.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "cloud computing"
+    },
+    {
+      "id": 485,
+      "raw_transcription": "ah when we deploy the asymptotic analysis uh we need",
+      "cleaned_transcription": "When we deploy the asymptotic analysis we need.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "asymptotic analysis"
+    },
+    {
+      "id": 486,
+      "raw_transcription": "th-th-th-the docker can be improved by",
+      "cleaned_transcription": "The Docker can be improved by.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 487,
+      "raw_transcription": "the rest api allows us to well uh calculate quickly",
+      "cleaned_transcription": "The REST API allows us to calculate quickly.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 488,
+      "raw_transcription": "the the array array has time complexity of of of",
+      "cleaned_transcription": "The array has time complexity of.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "array"
+    },
+    {
+      "id": 489,
+      "raw_transcription": "it-it-it-it's important to deploy the return value",
+      "cleaned_transcription": "It's important to deploy the return value.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "return value"
+    },
+    {
+      "id": 490,
+      "raw_transcription": "we like test the ah heap with",
+      "cleaned_transcription": "We test the heap with.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "heap"
+    },
+    {
+      "id": 491,
+      "raw_transcription": "the generator handles errors by. the generator handles errors by.",
+      "cleaned_transcription": "The generator handles errors by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "generator"
+    },
+    {
+      "id": 492,
+      "raw_transcription": "th-th-th-the average case allows us to compute quickly",
+      "cleaned_transcription": "The average case allows us to compute quickly.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "average case"
+    },
+    {
+      "id": 493,
+      "raw_transcription": "the the searching searching searching searching algorithm allows us to calculate quickly quickly quickly quickly",
+      "cleaned_transcription": "The searching algorithm allows us to calculate quickly.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 494,
+      "raw_transcription": "th-th-th-the design patterns requires us to",
+      "cleaned_transcription": "The design patterns requires us to.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "design patterns"
+    },
+    {
+      "id": 495,
+      "raw_transcription": "when well er uh we validate the average case we need",
+      "cleaned_transcription": "When we validate the average case we need.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "average case"
+    },
+    {
+      "id": 496,
+      "raw_transcription": "when we calculate uh the cloud er computing we need",
+      "cleaned_transcription": "When we calculate the cloud computing we need.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "cloud computing"
+    },
+    {
+      "id": 497,
+      "raw_transcription": "the git has time complexity of uh",
+      "cleaned_transcription": "The Git has time complexity of.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 498,
+      "raw_transcription": "the generator requires us us us to",
+      "cleaned_transcription": "The generator requires us to.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "generator"
+    },
+    {
+      "id": 499,
+      "raw_transcription": "the return return value value value transform the the data efficiently",
+      "cleaned_transcription": "The return value transform the data efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "return value"
+    },
+    {
+      "id": 500,
+      "raw_transcription": "we implement the greedy algorithm using. we implement the greedy algorithm using. we implement the greedy algorithm using. we implement the greedy algorithm using.",
+      "cleaned_transcription": "We implement the greedy algorithm using.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 501,
+      "raw_transcription": "the the sorting algorithm transform efficiently",
+      "cleaned_transcription": "The sorting algorithm transform efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 502,
+      "raw_transcription": "to sort the the return value value value value er we ah must",
+      "cleaned_transcription": "To sort the return value we must.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "return value"
+    },
+    {
+      "id": 503,
+      "raw_transcription": "the sorting sorting algorithm has has time complexity of",
+      "cleaned_transcription": "The sorting algorithm has time complexity of.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 504,
+      "raw_transcription": "the the the the variable develop efficiently",
+      "cleaned_transcription": "The variable develop efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "variable"
+    },
+    {
+      "id": 505,
+      "raw_transcription": "to verify the asymptotic analysis we must. to verify the asymptotic analysis we must.",
+      "cleaned_transcription": "To verify the asymptotic analysis we must.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "asymptotic analysis"
+    },
+    {
+      "id": 506,
+      "raw_transcription": "the hash table works by iterating. the hash table works by iterating. the hash table works by iterating. the hash table works by iterating.",
+      "cleaned_transcription": "The hash table works by iterating.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "hash table"
+    },
+    {
+      "id": 507,
+      "raw_transcription": "the backtracking um test um the data efficiently",
+      "cleaned_transcription": "The backtracking test the data efficiently.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "backtracking"
+    },
+    {
+      "id": 508,
+      "raw_transcription": "the the average average case works by iterating iterating",
+      "cleaned_transcription": "The average case works by iterating.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "average case"
+    },
+    {
+      "id": 509,
+      "raw_transcription": "the procedural programming requires us so to",
+      "cleaned_transcription": "The procedural programming requires us to.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 510,
+      "raw_transcription": "t-t-the database hash efficiently",
+      "cleaned_transcription": "The database hash efficiently.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "database"
+    },
+    {
+      "id": 511,
+      "raw_transcription": "we implement the decorator um using",
+      "cleaned_transcription": "We implement the decorator using.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "decorator"
+    },
+    {
+      "id": 512,
+      "raw_transcription": "the class processes data by. the class processes data by.",
+      "cleaned_transcription": "The class processes data by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "class"
+    },
+    {
+      "id": 513,
+      "raw_transcription": "ah the worst case case requires us to",
+      "cleaned_transcription": "The worst case requires us to.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "worst case"
+    },
+    {
+      "id": 514,
+      "raw_transcription": "ah the time complexity has has time complexity of",
+      "cleaned_transcription": "The time complexity has time complexity of.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 515,
+      "raw_transcription": "the containerization uh allows us to search quickly uh",
+      "cleaned_transcription": "The containerization allows us to search quickly.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "containerization"
+    },
+    {
+      "id": 516,
+      "raw_transcription": "we implement implement the the the algorithm using",
+      "cleaned_transcription": "We implement the algorithm using.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 517,
+      "raw_transcription": "the decorator allows us to encrypt quickly quickly quickly quickly",
+      "cleaned_transcription": "The decorator allows us to encrypt quickly.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "decorator"
+    },
+    {
+      "id": 518,
+      "raw_transcription": "t-t-the microservices works by iterating",
+      "cleaned_transcription": "The microservices works by iterating.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "microservices"
+    },
+    {
+      "id": 519,
+      "raw_transcription": "we test the algorithm with. we test the algorithm with. we test the algorithm with. we test the algorithm with.",
+      "cleaned_transcription": "We test the algorithm with.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 520,
+      "raw_transcription": "the design uh um you know patterns handles errors by",
+      "cleaned_transcription": "The design patterns handles errors by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "design patterns"
+    },
+    {
+      "id": 521,
+      "raw_transcription": "the containerization uses like space complexity",
+      "cleaned_transcription": "The containerization uses space complexity.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 522,
+      "raw_transcription": "the exception helps us iterate er better",
+      "cleaned_transcription": "The exception helps us iterate better.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "exception"
+    },
+    {
+      "id": 523,
+      "raw_transcription": "the solid principles design the data efficiently efficiently efficiently efficiently",
+      "cleaned_transcription": "The SOLID principles design the data efficiently.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 524,
+      "raw_transcription": "we configure you know the interpreter by processing so",
+      "cleaned_transcription": "We configure the interpreter by processing.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "interpreter"
+    },
+    {
+      "id": 525,
+      "raw_transcription": "yo-yo-yo-you know the array array array er array build you know efficiently efficiently efficiently",
+      "cleaned_transcription": "The array build efficiently.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "array"
+    },
+    {
+      "id": 526,
+      "raw_transcription": "the big so big big o notation processes processes processes well processes data data er by",
+      "cleaned_transcription": "The big O notation processes data by.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 527,
+      "raw_transcription": "the you know graphql has time complexity of",
+      "cleaned_transcription": "The GraphQL has time complexity of.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 528,
+      "raw_transcription": "the cloud computing can be improved by. the cloud computing can be improved by.",
+      "cleaned_transcription": "The cloud computing can be improved by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "cloud computing"
+    },
+    {
+      "id": 529,
+      "raw_transcription": "the backtracking backtracking backtracking backtracking requires us to",
+      "cleaned_transcription": "The backtracking requires us to.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "backtracking"
+    },
+    {
+      "id": 530,
+      "raw_transcription": "when we calculate the interpreter we need. when we calculate the interpreter we need.",
+      "cleaned_transcription": "When we calculate the interpreter we need.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "interpreter"
+    },
+    {
+      "id": 531,
+      "raw_transcription": "to hash hash hash the iterator we must",
+      "cleaned_transcription": "To hash the iterator we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "iterator"
+    },
+    {
+      "id": 532,
+      "raw_transcription": "to to to to optimize the the method we must must",
+      "cleaned_transcription": "To optimize the method we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "method"
+    },
+    {
+      "id": 533,
+      "raw_transcription": "the return value helps us you know convert er better",
+      "cleaned_transcription": "The return value helps us convert better.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "return value"
+    },
+    {
+      "id": 534,
+      "raw_transcription": "the average case has has time complexity of",
+      "cleaned_transcription": "The average case has time complexity of.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 535,
+      "raw_transcription": "ah the procedural programming uses space complexity you know",
+      "cleaned_transcription": "The procedural programming uses space complexity.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 536,
+      "raw_transcription": "the interpreter allows us to debug quickly. the interpreter allows us to debug quickly. the interpreter allows us to debug quickly.",
+      "cleaned_transcription": "The interpreter allows us to debug quickly.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "interpreter"
+    },
+    {
+      "id": 537,
+      "raw_transcription": "h-h-how this works convert the api",
+      "cleaned_transcription": "How this works convert the API.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 538,
+      "raw_transcription": "when we sort the searching algorithm algorithm we need",
+      "cleaned_transcription": "When we sort the searching algorithm we need.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 539,
+      "raw_transcription": "the binary binary binary search search tree processes data data by",
+      "cleaned_transcription": "The binary search tree processes data by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "binary search tree"
+    },
+    {
+      "id": 540,
+      "raw_transcription": "the dynamic programming can be improved by. the dynamic programming can be improved by. the dynamic programming can be improved by. the dynamic programming can be improved by.",
+      "cleaned_transcription": "The dynamic programming can be improved by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "dynamic programming"
+    },
+    {
+      "id": 541,
+      "raw_transcription": "we implement implement implement the containerization containerization containerization containerization using",
+      "cleaned_transcription": "We implement the containerization using.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "containerization"
+    },
+    {
+      "id": 542,
+      "raw_transcription": "when when when when we build build build build the procedural programming programming we need",
+      "cleaned_transcription": "When we build the procedural programming we need.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 543,
+      "raw_transcription": "the linked list requires us to. the linked list requires us to. the linked list requires us to.",
+      "cleaned_transcription": "The linked list requires us to.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "linked list"
+    },
+    {
+      "id": 544,
+      "raw_transcription": "th-th-th-the compiler handles errors by",
+      "cleaned_transcription": "The compiler handles errors by.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "compiler"
+    },
+    {
+      "id": 545,
+      "raw_transcription": "wh-wh-wh-when we iterate the method we need",
+      "cleaned_transcription": "When we iterate the method we need.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "method"
+    },
+    {
+      "id": 546,
+      "raw_transcription": "we test the lambda with. we test the lambda with. we test the lambda with. we test the lambda with.",
+      "cleaned_transcription": "We test the lambda with.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "lambda"
+    },
+    {
+      "id": 547,
+      "raw_transcription": "to validate the searching algorithm we must",
+      "cleaned_transcription": "To validate the searching algorithm we must.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 548,
+      "raw_transcription": "the class class class class traverse the the graphql graphql",
+      "cleaned_transcription": "The class traverse the GraphQL.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 549,
+      "raw_transcription": "er the interpreter allows like us to encrypt quickly well quickly",
+      "cleaned_transcription": "The interpreter allows us to encrypt quickly.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "interpreter"
+    },
+    {
+      "id": 550,
+      "raw_transcription": "th-th-th-the variable works by iterating",
+      "cleaned_transcription": "The variable works by iterating.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "variable"
+    },
+    {
+      "id": 551,
+      "raw_transcription": "we implement the solid principles using. we implement the solid principles using. we implement the solid principles using. we implement the solid principles using.",
+      "cleaned_transcription": "We implement the SOLID principles using.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 552,
+      "raw_transcription": "the greedy algorithm is used to decrypt information. the greedy algorithm is used to decrypt information. the greedy algorithm is used to decrypt information.",
+      "cleaned_transcription": "The greedy algorithm is used to decrypt information.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 553,
+      "raw_transcription": "in this case design the database. in this case design the database.",
+      "cleaned_transcription": "In this case design the database.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "database"
+    },
+    {
+      "id": 554,
+      "raw_transcription": "whe-whe-whe-when we decrypt the object",
+      "cleaned_transcription": "When we decrypt the object.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "object"
+    },
+    {
+      "id": 555,
+      "raw_transcription": "we we implement implement implement implement the the array using",
+      "cleaned_transcription": "We implement the array using.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "array"
+    },
+    {
+      "id": 556,
+      "raw_transcription": "the method is used to build information. the method is used to build information.",
+      "cleaned_transcription": "The method is used to build information.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "method"
+    },
+    {
+      "id": 557,
+      "raw_transcription": "the heap is used to uh ah sort information",
+      "cleaned_transcription": "The heap is used to sort information.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "heap"
+    },
+    {
+      "id": 558,
+      "raw_transcription": "we design the docker by like processing",
+      "cleaned_transcription": "We design the Docker by processing.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 559,
+      "raw_transcription": "we optimize the space complexity for",
+      "cleaned_transcription": "We optimize the space complexity for.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 560,
+      "raw_transcription": "we we we can sort sort sort using the greedy algorithm",
+      "cleaned_transcription": "We can sort using the greedy algorithm.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 561,
+      "raw_transcription": "the exception has has has has time complexity complexity complexity of",
+      "cleaned_transcription": "The exception has time complexity of.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "exception"
+    },
+    {
+      "id": 562,
+      "raw_transcription": "the git processes data by. the git processes data by. the git processes data by.",
+      "cleaned_transcription": "The Git processes data by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 563,
+      "raw_transcription": "th-th-th-the queue allows us to debug quickly",
+      "cleaned_transcription": "The queue allows us to debug quickly.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "queue"
+    },
+    {
+      "id": 564,
+      "raw_transcription": "we optimize uh optimize optimize the binary tree tree tree tree so uh by processing",
+      "cleaned_transcription": "We optimize the binary tree by processing.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "binary tree"
+    },
+    {
+      "id": 565,
+      "raw_transcription": "t-t-the api is used well used like used you know used to test test information",
+      "cleaned_transcription": "The API is used to test information.",
+      "stutter_type": "mixed_pattern",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 566,
+      "raw_transcription": "the queue can be improved by. the queue can be improved by. the queue can be improved by.",
+      "cleaned_transcription": "The queue can be improved by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "queue"
+    },
+    {
+      "id": 567,
+      "raw_transcription": "t-t-the kubernetes requires us to",
+      "cleaned_transcription": "The Kubernetes requires us to.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 568,
+      "raw_transcription": "the solid principles works by iterating. the solid principles works by iterating. the solid principles works by iterating.",
+      "cleaned_transcription": "The SOLID principles works by iterating.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 569,
+      "raw_transcription": "the asymptotic analysis works by iterating. the asymptotic analysis works by iterating. the asymptotic analysis works by iterating. the asymptotic analysis works by iterating.",
+      "cleaned_transcription": "The asymptotic analysis works by iterating.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "asymptotic analysis"
+    },
+    {
+      "id": 570,
+      "raw_transcription": "well when we sort the binary tree we need um",
+      "cleaned_transcription": "When we sort the binary tree we need.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "binary tree"
+    },
+    {
+      "id": 571,
+      "raw_transcription": "the api api is used used used to to to calculate information",
+      "cleaned_transcription": "The API is used to calculate information.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 572,
+      "raw_transcription": "th-th-the functional programming works by iterating",
+      "cleaned_transcription": "The functional programming works by iterating.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "function"
+    },
+    {
+      "id": 573,
+      "raw_transcription": "we implement the design patterns you know using",
+      "cleaned_transcription": "We implement the design patterns using.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "design patterns"
+    },
+    {
+      "id": 574,
+      "raw_transcription": "the the the average case requires us to to to",
+      "cleaned_transcription": "The average case requires us to.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "average case"
+    },
+    {
+      "id": 575,
+      "raw_transcription": "it's important to optimize the graphql. it's important to optimize the graphql. it's important to optimize the graphql.",
+      "cleaned_transcription": "It's important to optimize the GraphQL.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "graph"
+    },
+    {
+      "id": 576,
+      "raw_transcription": "to to to illustrate cache the the stack stack",
+      "cleaned_transcription": "To illustrate cache the stack.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "stack"
+    },
+    {
+      "id": 577,
+      "raw_transcription": "the generator can be improved by. the generator can be improved by. the generator can be improved by.",
+      "cleaned_transcription": "The generator can be improved by.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "generator"
+    },
+    {
+      "id": 578,
+      "raw_transcription": "we implement the the best case using using using",
+      "cleaned_transcription": "We implement the best case using.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "best case"
+    },
+    {
+      "id": 579,
+      "raw_transcription": "the ide can can can can be be be be improved by by by by",
+      "cleaned_transcription": "The IDE can be improved by.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 580,
+      "raw_transcription": "we can debug using the recursive algorithm. we can debug using the recursive algorithm. we can debug using the recursive algorithm.",
+      "cleaned_transcription": "We can debug using the recursive algorithm.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 581,
+      "raw_transcription": "the ci/cd er helps us search ah better um",
+      "cleaned_transcription": "The CI/CD helps us search better.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 582,
+      "raw_transcription": "we implement the big o notation using",
+      "cleaned_transcription": "We implement the big O notation using.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 583,
+      "raw_transcription": "the well decorator ah has time complexity so of",
+      "cleaned_transcription": "The decorator has time complexity of.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "decorator"
+    },
+    {
+      "id": 584,
+      "raw_transcription": "we optimize optimize the rest api for",
+      "cleaned_transcription": "We optimize the REST API for.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 585,
+      "raw_transcription": "we test the recursive algorithm with. we test the recursive algorithm with. we test the recursive algorithm with. we test the recursive algorithm with.",
+      "cleaned_transcription": "We test the recursive algorithm with.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 586,
+      "raw_transcription": "the space complexity has time time complexity of",
+      "cleaned_transcription": "The space complexity has time complexity of.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 587,
+      "raw_transcription": "we validate the testing framework by processing processing",
+      "cleaned_transcription": "We validate the testing framework by processing.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "testing framework"
+    },
+    {
+      "id": 588,
+      "raw_transcription": "the er variable you know processes data by",
+      "cleaned_transcription": "The variable processes data by.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "variable"
+    },
+    {
+      "id": 589,
+      "raw_transcription": "you know the you know microservices you know allows us to traverse quickly",
+      "cleaned_transcription": "The microservices allows us to traverse quickly.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "microservices"
+    },
+    {
+      "id": 590,
+      "raw_transcription": "we test the space complexity with. we test the space complexity with.",
+      "cleaned_transcription": "We test the space complexity with.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "space complexity"
+    },
+    {
+      "id": 591,
+      "raw_transcription": "t-t-the decorator decrypt efficiently",
+      "cleaned_transcription": "The decorator decrypt efficiently.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "decorator"
+    },
+    {
+      "id": 592,
+      "raw_transcription": "the solid principles has time complexity of of of",
+      "cleaned_transcription": "The SOLID principles has time complexity of.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "time complexity"
+    },
+    {
+      "id": 593,
+      "raw_transcription": "the ci/cd is used to build information. the ci/cd is used to build information.",
+      "cleaned_transcription": "The CI/CD is used to build information.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 594,
+      "raw_transcription": "the iterator has time complexity of. the iterator has time complexity of.",
+      "cleaned_transcription": "The iterator has time complexity of.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "iterator"
+    },
+    {
+      "id": 595,
+      "raw_transcription": "we traverse the class by processing. we traverse the class by processing. we traverse the class by processing. we traverse the class by processing.",
+      "cleaned_transcription": "We traverse the class by processing.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "class"
+    },
+    {
+      "id": 596,
+      "raw_transcription": "the sorting algorithm er has time complexity of",
+      "cleaned_transcription": "The sorting algorithm has time complexity of.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "algorithm"
+    },
+    {
+      "id": 597,
+      "raw_transcription": "the procedural programming works by iterating. the procedural programming works by iterating. the procedural programming works by iterating.",
+      "cleaned_transcription": "The procedural programming works by iterating.",
+      "stutter_type": "sentence_repetition",
+      "context": "cs_student_explanation",
+      "topic": "procedural programming"
+    },
+    {
+      "id": 598,
+      "raw_transcription": "the ah linked list ah allows us to optimize quickly",
+      "cleaned_transcription": "The linked list allows us to optimize quickly.",
+      "stutter_type": "filler_words",
+      "context": "cs_student_explanation",
+      "topic": "linked list"
+    },
+    {
+      "id": 599,
+      "raw_transcription": "to traverse the ide we must",
+      "cleaned_transcription": "To traverse the IDE we must.",
+      "stutter_type": "partial_word",
+      "context": "cs_student_explanation",
+      "topic": "general_cs"
+    },
+    {
+      "id": 600,
+      "raw_transcription": "to develop develop the the generator we must",
+      "cleaned_transcription": "To develop the generator we must.",
+      "stutter_type": "word_repetition",
+      "context": "cs_student_explanation",
+      "topic": "generator"
+    }
+  ]
+}

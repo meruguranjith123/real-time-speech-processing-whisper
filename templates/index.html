@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Speech Processing Demo</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn.stop {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .status {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .status.recording {
+            color: #f5576c;
+            animation: pulse 1.5s infinite;
+        }
+
+        .status.idle {
+            color: #667eea;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .display-section {
+            margin: 30px 0;
+        }
+
+        .display-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .text-display {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 100px;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .cleaned-text {
+            background: #e8f5e9;
+            border-color: #4caf50;
+            color: #2e7d32;
+        }
+
+        .stutters-list {
+            background: #fff3e0;
+            border-color: #ff9800;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .stutters-list h3 {
+            color: #f57c00;
+            margin-bottom: 10px;
+        }
+
+        .stutter-item {
+            background: white;
+            padding: 8px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ff9800;
+        }
+
+        .predictions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .prediction-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .prediction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .prediction-card h4 {
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .prediction-text {
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        .audio-visualizer {
+            width: 100%;
+            height: 100px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e9ecef;
+        }
+
+        .visualizer-bar {
+            width: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 2px;
+            border-radius: 2px;
+            transition: height 0.1s;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .info-box p {
+            margin: 5px 0;
+            color: #1565c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎤 Real-Time Speech Processing</h1>
+            <p>Powered by Whisper AI • Stuttering Detection • Next Sentence Prediction</p>
+        </div>
+
+        <div class="content">
+            <div class="controls">
+                <button id="startBtn" class="btn">Start Recording</button>
+                <button id="stopBtn" class="btn stop" disabled>Stop Recording</button>
+                <button id="demoBtn" class="btn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">Show Demo</button>
+            </div>
+
+            <div id="status" class="status idle">Ready to record</div>
+
+            <div class="audio-visualizer" id="visualizer">
+                <div id="visualizerBars"></div>
+            </div>
+
+            <div class="display-section">
+                <h2>📝 Raw Transcription</h2>
+                <div id="rawText" class="text-display">Waiting for audio input...</div>
+            </div>
+
+            <div class="display-section">
+                <h2>✨ Cleaned Text (Stuttering Removed)</h2>
+                <div id="cleanedText" class="text-display cleaned-text">Waiting for audio input...</div>
+                <div id="stuttersContainer" style="display: none;">
+                    <div class="stutters-list">
+                        <h3>Detected Stutters:</h3>
+                        <div id="stuttersList"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="display-section">
+                <h2>🔮 Predicted Next Sentences</h2>
+                <div id="predictions" class="predictions">
+                    <div class="prediction-card">
+                        <h4>Prediction 1</h4>
+                        <div class="prediction-text">Start speaking to see predictions...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <p><strong>How it works:</strong></p>
+                <p>1. Click "Start Recording" to begin capturing audio</p>
+                <p>2. Allow microphone access when prompted by your browser</p>
+                <p>3. Speak naturally - the system will transcribe in real-time</p>
+                <p>4. Stutters and repetitions are automatically detected and cleaned</p>
+                <p>5. Possible next sentences are predicted based on your current speech</p>
+            </div>
+
+            <div class="info-box" id="permissionHelp" style="display: none; background: #fff3cd; border-left-color: #ffc107;">
+                <p><strong>🔒 Microphone Permission Help:</strong></p>
+                <p><strong>Chrome/Edge:</strong> Click the lock icon (🔒) in the address bar → Allow microphone → Refresh page</p>
+                <p><strong>Firefox:</strong> Click the shield icon in address bar → Permissions → Allow microphone</p>
+                <p><strong>Safari:</strong> Safari → Settings → Websites → Microphone → Allow for this site</p>
+                <p><strong>System Settings:</strong> Check System Preferences → Security & Privacy → Microphone</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const socket = io();
+        let mediaRecorder;
+        let audioContext;
+        let analyser;
+        let processor;
+        let stream;
+        let dataArray;
+        let isRecording = false;
+        let animationFrame;
+
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const demoBtn = document.getElementById('demoBtn');
+        const status = document.getElementById('status');
+        const rawText = document.getElementById('rawText');
+        const cleanedText = document.getElementById('cleanedText');
+        const stuttersContainer = document.getElementById('stuttersContainer');
+        const stuttersList = document.getElementById('stuttersList');
+        const predictions = document.getElementById('predictions');
+        const visualizer = document.getElementById('visualizerBars');
+        
+        // Demo data for presentation screenshots
+        const demoExamples = [
+            {
+                raw: "I'm going to start with the first one. I'm going to start with the first one. I'm going to start with the first one. I'm going to start with the first one.",
+                cleaned: "I'm going to start with the first one.",
+                stutters: ["Sentence repeated 4 times: 'i'm going to start with the first one'"],
+                predictions: [
+                    "I'm going to start with the first one, which is machine learning.",
+                    "I'm going to start with the first one, and then move to the next concept.",
+                    "I'm going to start with the first one, which demonstrates the key principle."
+                ]
+            },
+            {
+                raw: "the the the main idea is that we we need to to understand this concept concept",
+                cleaned: "The main idea is that we need to understand this concept.",
+                stutters: [
+                    "the (repeated 3 times)",
+                    "we (repeated 2 times)",
+                    "to (repeated 2 times)",
+                    "concept (repeated 2 times)"
+                ],
+                predictions: [
+                    "The main idea is that we need to understand this concept is important to understand.",
+                    "The main idea is that we need to understand this concept helps us see the bigger picture.",
+                    "The main idea is that we need to understand this concept demonstrates the key principle."
+                ]
+            },
+            {
+                raw: "um uh so so the the question is how do we approach this problem problem",
+                cleaned: "So the question is how do we approach this problem.",
+                stutters: [
+                    "so (repeated 2 times)",
+                    "the (repeated 2 times)",
+                    "problem (repeated 2 times)"
+                ],
+                predictions: [
+                    "So the question is how do we approach this problem is important to understand.",
+                    "So the question is how do we approach this problem helps us see the bigger picture.",
+                    "So the question is how do we approach this problem demonstrates the key principle."
+                ]
+            }
+        ];
+        
+        let currentDemoIndex = 0;
+
+        // Initialize visualizer bars
+        function initVisualizer() {
+            visualizer.innerHTML = '';
+            for (let i = 0; i < 50; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'visualizer-bar';
+                bar.style.height = '10px';
+                visualizer.appendChild(bar);
+            }
+        }
+
+        initVisualizer();
+
+        // Update visualizer
+        function updateVisualizer() {
+            if (!analyser || !isRecording) return;
+
+            dataArray = new Uint8Array(analyser.frequencyBinCount);
+            analyser.getByteFrequencyData(dataArray);
+
+            const bars = visualizer.children;
+            const step = Math.floor(dataArray.length / bars.length);
+
+            for (let i = 0; i < bars.length; i++) {
+                const value = dataArray[i * step] || 0;
+                const height = (value / 255) * 100;
+                bars[i].style.height = Math.max(height, 10) + 'px';
+            }
+
+            if (isRecording) {
+                animationFrame = requestAnimationFrame(updateVisualizer);
+            }
+        }
+
+        // Check microphone availability
+        async function checkMicrophone() {
+            try {
+                if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                    throw new Error('Your browser does not support microphone access. Please use Chrome, Edge, or Firefox.');
+                }
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                stream.getTracks().forEach(track => track.stop()); // Stop immediately, just testing
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
+
+        // Start recording
+        startBtn.addEventListener('click', async () => {
+            try {
+                // Check if microphone is available
+                if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                    alert('❌ Your browser does not support microphone access.\n\nPlease use:\n• Google Chrome\n• Microsoft Edge\n• Mozilla Firefox\n\nSafari has limited support.');
+                    return;
+                }
+
+                // Request microphone with better error handling
+                stream = null;
+                try {
+                    stream = await navigator.mediaDevices.getUserMedia({ 
+                        audio: {
+                            echoCancellation: true,
+                            noiseSuppression: true,
+                            autoGainControl: true
+                        } 
+                    });
+                } catch (error) {
+                    console.error('Microphone error:', error);
+                    
+                    let errorMessage = '❌ Cannot access microphone.\n\n';
+                    
+                    if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
+                        errorMessage += '🔒 Microphone permission denied.\n\n';
+                        errorMessage += 'To fix:\n';
+                        errorMessage += '1. Click the lock icon in your browser address bar\n';
+                        errorMessage += '2. Allow microphone access\n';
+                        errorMessage += '3. Refresh the page\n';
+                        errorMessage += '4. Try again';
+                    } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
+                        errorMessage += '🎤 No microphone found.\n\n';
+                        errorMessage += 'Please connect a microphone and try again.';
+                    } else if (error.name === 'NotReadableError' || error.name === 'TrackStartError') {
+                        errorMessage += '⚠️ Microphone is being used by another app.\n\n';
+                        errorMessage += 'Please close other apps using the microphone and try again.';
+                    } else {
+                        errorMessage += `Error: ${error.message}\n\n`;
+                        errorMessage += 'Please check your browser settings and microphone permissions.';
+                    }
+                    
+                    alert(errorMessage);
+                    status.textContent = '❌ Microphone access denied';
+                    status.className = 'status idle';
+                    return;
+                }
+                
+                // Set up audio context for visualization
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const source = audioContext.createMediaStreamSource(stream);
+                analyser = audioContext.createAnalyser();
+                analyser.fftSize = 256;
+                source.connect(analyser);
+
+                // Use Web Audio API to convert to PCM (avoids ffmpeg WebM decoding issues)
+                const bufferSize = 4096;
+                processor = audioContext.createScriptProcessor(bufferSize, 1, 1);
+                
+                processor.onaudioprocess = (e) => {
+                    if (!isRecording) return;
+                    
+                    try {
+                        const inputData = e.inputBuffer.getChannelData(0);
+                        // Convert float32 to int16 PCM
+                        const pcmData = new Int16Array(inputData.length);
+                        for (let i = 0; i < inputData.length; i++) {
+                            const s = Math.max(-1, Math.min(1, inputData[i]));
+                            pcmData[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+                        }
+                        
+                        // Convert to base64
+                        const base64Audio = btoa(
+                            String.fromCharCode(...new Uint8Array(pcmData.buffer))
+                        );
+                        
+                        console.log('Sending PCM audio chunk:', base64Audio.length, 'bytes, format: pcm');
+                        socket.emit('audio_data', {
+                            data: base64Audio,
+                            sample_rate: audioContext.sampleRate,
+                            format: 'pcm'
+                        });
+                    } catch (err) {
+                        console.error('Error in audio processing:', err);
+                    }
+                };
+                
+                source.connect(processor);
+                processor.connect(audioContext.destination);
+                
+                console.log('✓✓✓ Web Audio API processor connected - using PCM format (no ffmpeg needed) ✓✓✓');
+                console.log('Sample rate:', audioContext.sampleRate);
+                
+                // DO NOT USE MediaRecorder - it causes ffmpeg errors!
+                // Completely disable MediaRecorder
+                if (typeof MediaRecorder !== 'undefined') {
+                    console.warn('MediaRecorder is available but DISABLED - using Web Audio API only');
+                }
+                mediaRecorder = null; // Explicitly set to null
+
+                isRecording = true;
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+                status.textContent = '🔴 Recording...';
+                status.className = 'status recording';
+
+                updateVisualizer();
+
+            } catch (error) {
+                console.error('Unexpected error:', error);
+                alert('Unexpected error: ' + error.message + '\n\nPlease check the browser console for details.');
+            }
+        });
+
+        // Stop recording
+        stopBtn.addEventListener('click', () => {
+            console.log('Stopping recording...');
+            
+            // MediaRecorder is disabled - don't use it
+            // if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+            //     mediaRecorder.stop();
+            // }
+            
+            if (processor) {
+                processor.disconnect();
+                processor = null;
+                console.log('Audio processor disconnected');
+            }
+            
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+
+            if (audioContext) {
+                audioContext.close();
+            }
+
+            if (animationFrame) {
+                cancelAnimationFrame(animationFrame);
+            }
+
+            isRecording = false;
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            status.textContent = 'Ready to record';
+            status.className = 'status idle';
+
+            // Reset visualizer
+            const bars = visualizer.children;
+            for (let bar of bars) {
+                bar.style.height = '10px';
+            }
+
+            socket.emit('reset');
+        });
+        
+        // Demo button - show example outputs for screenshots
+        demoBtn.addEventListener('click', () => {
+            // Stop any ongoing recording
+            if (isRecording) {
+                stopBtn.click();
+            }
+            
+            // Get current demo (before incrementing)
+            const demo = demoExamples[currentDemoIndex];
+            
+            // Show raw text
+            rawText.textContent = demo.raw;
+            
+            // Show cleaned text
+            cleanedText.textContent = demo.cleaned;
+            
+            // Show stutters
+            if (demo.stutters && demo.stutters.length > 0) {
+                stuttersContainer.style.display = 'block';
+                stuttersList.innerHTML = demo.stutters.map(stutter => 
+                    `<div class="stutter-item">${stutter}</div>`
+                ).join('');
+            } else {
+                stuttersContainer.style.display = 'none';
+            }
+            
+            // Show predictions
+            if (demo.predictions && demo.predictions.length > 0) {
+                predictions.innerHTML = demo.predictions.map((pred, index) => `
+                    <div class="prediction-card">
+                        <h4>Prediction ${index + 1}</h4>
+                        <div class="prediction-text">${pred}</div>
+                    </div>
+                `).join('');
+            }
+            
+            // Update status
+            status.textContent = `📸 Demo Mode - Example ${currentDemoIndex + 1}/${demoExamples.length} - Ready for Screenshot`;
+            status.className = 'status idle';
+            
+            // Cycle to next demo for next click
+            currentDemoIndex = (currentDemoIndex + 1) % demoExamples.length;
+            
+            // Update button text to show next demo number
+            demoBtn.textContent = `Show Demo ${currentDemoIndex + 1}/${demoExamples.length}`;
+        });
+
+        // Handle transcription results
+        socket.on('transcription_result', (result) => {
+            if (result.raw_text) {
+                rawText.textContent = result.raw_text || 'Waiting for audio input...';
+            }
+
+            if (result.cleaned_text) {
+                cleanedText.textContent = result.cleaned_text || 'Waiting for audio input...';
+            }
+
+            // Display stutters
+            if (result.stutters && result.stutters.length > 0) {
+                stuttersContainer.style.display = 'block';
+                stuttersList.innerHTML = result.stutters.map(stutter => 
+                    `<div class="stutter-item">${stutter}</div>`
+                ).join('');
+            } else {
+                stuttersContainer.style.display = 'none';
+            }
+
+            // Display predictions
+            if (result.predictions && result.predictions.length > 0) {
+                predictions.innerHTML = result.predictions.map((pred, index) => `
+                    <div class="prediction-card">
+                        <h4>Prediction ${index + 1}</h4>
+                        <div class="prediction-text">${pred}</div>
+                    </div>
+                `).join('');
+            }
+        });
+
+        // Handle errors
+        socket.on('error', (error) => {
+            console.error('Server error:', error);
+            alert('Error processing audio: ' + error.message);
+        });
+
+        // Connection status
+        socket.on('connect', () => {
+            console.log('Connected to server');
+            status.textContent = 'Ready to record';
+        });
+
+        socket.on('disconnect', () => {
+            console.log('Disconnected from server');
+            status.textContent = '⚠️ Disconnected from server';
+        });
+
+        socket.on('connect_error', (error) => {
+            console.error('Connection error:', error);
+            status.textContent = '❌ Connection error';
+            alert('Cannot connect to server. Please make sure the server is running.');
+        });
+
+        // Show permission help if needed
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if we're on HTTPS or localhost (required for microphone)
+            if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+                const helpBox = document.getElementById('permissionHelp');
+                helpBox.style.display = 'block';
+                helpBox.innerHTML = '<p><strong>⚠️ HTTPS Required:</strong> Microphone access requires HTTPS or localhost. Please use http://localhost:5001</p>';
+            }
+        });
+    </script>
+</body>
+</html>
+
