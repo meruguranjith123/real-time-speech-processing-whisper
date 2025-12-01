@@ -5,7 +5,7 @@
 
 set -e
 
-GITHUB_USER="Ranjith"
+GITHUB_USER="meruguranjith123"
 REPO_NAME="real-time-speech-processing-whisper"
 
 echo "=========================================="
