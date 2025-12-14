@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real-Time Speech Processing Demo</title>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
     <style>
         * {
@@ -82,6 +79,10 @@
 
         .btn.stop {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .btn.final-output {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
 
         .btn:disabled {
@@ -226,6 +227,127 @@
             margin: 5px 0;
             color: #1565c0;
         }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+            margin: 40px auto;
+            padding: 30px;
+            animation: slideDown 0.3s;
+            position: relative;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .modal-header h2 {
+            color: #667eea;
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .modal-close {
+            background: #f5576c;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.1);
+        }
+
+        .modal-section {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .modal-section h3 {
+            color: #667eea;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .modal-section-content {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            min-height: 50px;
+            line-height: 1.6;
+        }
+
+        .modal-stutters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .modal-stutter-badge {
+            background: #fff3e0;
+            color: #f57c00;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 2px solid #ff9800;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -239,7 +361,9 @@
             <div class="controls">
                 <button id="startBtn" class="btn">Start Recording</button>
                 <button id="stopBtn" class="btn stop" disabled>Stop Recording</button>
-                <button id="demoBtn" class="btn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">Show Demo</button>
+                <button id="finalOutputBtn" class="btn final-output" disabled title="View Final Output">
+                    📋 Final Output
+                </button>
             </div>
 
             <div id="status" class="status idle">Ready to record</div>
@@ -258,7 +382,10 @@
                 <div id="cleanedText" class="text-display cleaned-text">Waiting for audio input...</div>
                 <div id="stuttersContainer" style="display: none;">
                     <div class="stutters-list">
-                        <h3>Detected Stutters:</h3>
+                        <h3>🔍 Detected Stutter Patterns:</h3>
+                        <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;">
+                            Format: <strong>word - count</strong> (e.g., "the - 2" means "the" was repeated 2 times)
+                        </p>
                         <div id="stuttersList"></div>
                     </div>
                 </div>
@@ -277,18 +404,46 @@
             <div class="info-box">
                 <p><strong>How it works:</strong></p>
                 <p>1. Click "Start Recording" to begin capturing audio</p>
-                <p>2. Allow microphone access when prompted by your browser</p>
-                <p>3. Speak naturally - the system will transcribe in real-time</p>
-                <p>4. Stutters and repetitions are automatically detected and cleaned</p>
-                <p>5. Possible next sentences are predicted based on your current speech</p>
+                <p>2. Speak naturally - the system will transcribe in real-time</p>
+                <p>3. Stutters and repetitions are automatically detected and cleaned</p>
+                <p>4. Possible next sentences are predicted based on your current speech</p>
+                <p>5. Click "Final Output" after speaking to see a complete summary</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Output Modal -->
+    <div id="finalOutputModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📋 Final Output Summary</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
             </div>
 
-            <div class="info-box" id="permissionHelp" style="display: none; background: #fff3cd; border-left-color: #ffc107;">
-                <p><strong>🔒 Microphone Permission Help:</strong></p>
-                <p><strong>Chrome/Edge:</strong> Click the lock icon (🔒) in the address bar → Allow microphone → Refresh page</p>
-                <p><strong>Firefox:</strong> Click the shield icon in address bar → Permissions → Allow microphone</p>
-                <p><strong>Safari:</strong> Safari → Settings → Websites → Microphone → Allow for this site</p>
-                <p><strong>System Settings:</strong> Check System Preferences → Security & Privacy → Microphone</p>
+            <div class="modal-section">
+                <h3>📝 Raw Audio Transcription</h3>
+                <div id="modalRawText" class="modal-section-content">No audio captured yet.</div>
+            </div>
+
+            <div class="modal-section">
+                <h3>✨ Cleaned Text (Stuttering Removed)</h3>
+                <div id="modalCleanedText" class="modal-section-content">No cleaned text available.</div>
+            </div>
+
+            <div class="modal-section">
+                <h3>🔍 Detected Stutter Patterns</h3>
+                <div id="modalStutters" class="modal-section-content">
+                    <div class="modal-stutters" id="modalStuttersList">
+                        <span style="color: #999;">No stutters detected.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>🔮 Predicted Next Sentences</h3>
+                <div id="modalPredictions" class="modal-section-content">
+                    <div id="modalPredictionsList" style="color: #999;">No predictions available.</div>
+                </div>
             </div>
         </div>
     </div>
@@ -298,15 +453,16 @@
         let mediaRecorder;
         let audioContext;
         let analyser;
-        let processor;
-        let stream;
         let dataArray;
         let isRecording = false;
         let animationFrame;
+        let audioChunks = []; // Accumulate audio chunks
+        let accumulatedAudio = null; // For processing accumulated audio
+        let processingInterval = null; // Interval for periodic processing
 
         const startBtn = document.getElementById('startBtn');
         const stopBtn = document.getElementById('stopBtn');
-        const demoBtn = document.getElementById('demoBtn');
+        const finalOutputBtn = document.getElementById('finalOutputBtn');
         const status = document.getElementById('status');
         const rawText = document.getElementById('rawText');
         const cleanedText = document.getElementById('cleanedText');
@@ -315,50 +471,27 @@
         const predictions = document.getElementById('predictions');
         const visualizer = document.getElementById('visualizerBars');
         
-        // Demo data for presentation screenshots
-        const demoExamples = [
-            {
-                raw: "I'm going to start with the first one. I'm going to start with the first one. I'm going to start with the first one. I'm going to start with the first one.",
-                cleaned: "I'm going to start with the first one.",
-                stutters: ["Sentence repeated 4 times: 'i'm going to start with the first one'"],
-                predictions: [
-                    "I'm going to start with the first one, which is machine learning.",
-                    "I'm going to start with the first one, and then move to the next concept.",
-                    "I'm going to start with the first one, which demonstrates the key principle."
-                ]
-            },
-            {
-                raw: "the the the main idea is that we we need to to understand this concept concept",
-                cleaned: "The main idea is that we need to understand this concept.",
-                stutters: [
-                    "the (repeated 3 times)",
-                    "we (repeated 2 times)",
-                    "to (repeated 2 times)",
-                    "concept (repeated 2 times)"
-                ],
-                predictions: [
-                    "The main idea is that we need to understand this concept is important to understand.",
-                    "The main idea is that we need to understand this concept helps us see the bigger picture.",
-                    "The main idea is that we need to understand this concept demonstrates the key principle."
-                ]
-            },
-            {
-                raw: "um uh so so the the question is how do we approach this problem problem",
-                cleaned: "So the question is how do we approach this problem.",
-                stutters: [
-                    "so (repeated 2 times)",
-                    "the (repeated 2 times)",
-                    "problem (repeated 2 times)"
-                ],
-                predictions: [
-                    "So the question is how do we approach this problem is important to understand.",
-                    "So the question is how do we approach this problem helps us see the bigger picture.",
-                    "So the question is how do we approach this problem demonstrates the key principle."
-                ]
-            }
-        ];
+        // Modal elements
+        const finalOutputModal = document.getElementById('finalOutputModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalRawText = document.getElementById('modalRawText');
+        const modalCleanedText = document.getElementById('modalCleanedText');
+        const modalStuttersList = document.getElementById('modalStuttersList');
+        const modalPredictionsList = document.getElementById('modalPredictionsList');
         
-        let currentDemoIndex = 0;
+        // Store final results
+        let finalResults = {
+            rawText: '',
+            cleanedText: '',
+            stutters: [],
+            predictions: []
+        };
+        
+        // Accumulate raw text for real-time display
+        let accumulatedRawText = '';
+        
+        // Accumulate all detected stutters (don't replace, keep adding)
+        let allDetectedStutters = [];
 
         // Initialize visualizer bars
         function initVisualizer() {
@@ -394,154 +527,183 @@
             }
         }
 
-        // Check microphone availability
-        async function checkMicrophone() {
-            try {
-                if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-                    throw new Error('Your browser does not support microphone access. Please use Chrome, Edge, or Firefox.');
-                }
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                stream.getTracks().forEach(track => track.stop()); // Stop immediately, just testing
-                return true;
-            } catch (error) {
-                return false;
-            }
-        }
-
         // Start recording
         startBtn.addEventListener('click', async () => {
             try {
-                // Check if microphone is available
-                if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-                    alert('❌ Your browser does not support microphone access.\n\nPlease use:\n• Google Chrome\n• Microsoft Edge\n• Mozilla Firefox\n\nSafari has limited support.');
-                    return;
-                }
-
-                // Request microphone with better error handling
-                stream = null;
-                try {
-                    stream = await navigator.mediaDevices.getUserMedia({ 
-                        audio: {
-                            echoCancellation: true,
-                            noiseSuppression: true,
-                            autoGainControl: true
-                        } 
-                    });
-                } catch (error) {
-                    console.error('Microphone error:', error);
-                    
-                    let errorMessage = '❌ Cannot access microphone.\n\n';
-                    
-                    if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
-                        errorMessage += '🔒 Microphone permission denied.\n\n';
-                        errorMessage += 'To fix:\n';
-                        errorMessage += '1. Click the lock icon in your browser address bar\n';
-                        errorMessage += '2. Allow microphone access\n';
-                        errorMessage += '3. Refresh the page\n';
-                        errorMessage += '4. Try again';
-                    } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
-                        errorMessage += '🎤 No microphone found.\n\n';
-                        errorMessage += 'Please connect a microphone and try again.';
-                    } else if (error.name === 'NotReadableError' || error.name === 'TrackStartError') {
-                        errorMessage += '⚠️ Microphone is being used by another app.\n\n';
-                        errorMessage += 'Please close other apps using the microphone and try again.';
-                    } else {
-                        errorMessage += `Error: ${error.message}\n\n`;
-                        errorMessage += 'Please check your browser settings and microphone permissions.';
-                    }
-                    
-                    alert(errorMessage);
-                    status.textContent = '❌ Microphone access denied';
-                    status.className = 'status idle';
-                    return;
-                }
+                // Request microphone access with specific constraints
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    audio: {
+                        echoCancellation: true,
+                        noiseSuppression: true,
+                        autoGainControl: true,
+                        sampleRate: 16000  // Use 16kHz to match Whisper requirements
+                    } 
+                });
                 
-                // Set up audio context for visualization
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                console.log('Microphone access granted');
+                console.log('Audio tracks:', stream.getAudioTracks());
+                
+                // Set up audio context for visualization and PCM capture
+                audioContext = new (window.AudioContext || window.webkitAudioContext)({
+                    sampleRate: 16000
+                });
                 const source = audioContext.createMediaStreamSource(stream);
                 analyser = audioContext.createAnalyser();
                 analyser.fftSize = 256;
+                analyser.smoothingTimeConstant = 0.8;
                 source.connect(analyser);
-
-                // Use Web Audio API to convert to PCM (avoids ffmpeg WebM decoding issues)
-                const bufferSize = 4096;
-                processor = audioContext.createScriptProcessor(bufferSize, 1, 1);
                 
-                processor.onaudioprocess = (e) => {
+                // Initialize PCM buffer on window object
+                window.pcmBuffer = [];
+                
+                // Create ScriptProcessorNode for PCM audio capture (deprecated but widely supported)
+                // Alternative: Use AudioWorklet if available, but ScriptProcessorNode is more compatible
+                const bufferSize = 4096;
+                const scriptProcessor = audioContext.createScriptProcessor(bufferSize, 1, 1);
+                
+                // Function to send accumulated PCM audio
+                const sendPCMAudio = () => {
+                    if (!window.pcmBuffer || window.pcmBuffer.length === 0) return;
+                    
+                    // Combine all buffers
+                    const totalLength = window.pcmBuffer.reduce((sum, buf) => sum + buf.length, 0);
+                    const combined = new Int16Array(totalLength);
+                    let offset = 0;
+                    for (const buf of window.pcmBuffer) {
+                        combined.set(buf, offset);
+                        offset += buf.length;
+                    }
+                    
+                    // Convert to base64 - use a more efficient method for large arrays
+                    const uint8Array = new Uint8Array(combined.buffer);
+                    let binary = '';
+                    const chunkSize = 8192; // Process in chunks to avoid stack overflow
+                    for (let i = 0; i < uint8Array.length; i += chunkSize) {
+                        binary += String.fromCharCode.apply(null, uint8Array.subarray(i, i + chunkSize));
+                    }
+                    const base64Audio = btoa(binary);
+                    
+                    console.log(`Sending PCM audio: ${combined.length} samples (${(combined.length / 16000).toFixed(2)}s)`);
+                    
+                    // Update status to show processing
+                    status.textContent = '🔄 Processing audio...';
+                    
+                    // Send to server
+                    socket.emit('audio_data', {
+                        data: base64Audio,
+                        sample_rate: 16000,
+                        format: 'pcm'
+                    });
+                    
+                    // Clear buffer
+                    window.pcmBuffer = [];
+                };
+                
+                scriptProcessor.onaudioprocess = (event) => {
                     if (!isRecording) return;
                     
-                    try {
-                        const inputData = e.inputBuffer.getChannelData(0);
-                        // Convert float32 to int16 PCM
-                        const pcmData = new Int16Array(inputData.length);
-                        for (let i = 0; i < inputData.length; i++) {
-                            const s = Math.max(-1, Math.min(1, inputData[i]));
-                            pcmData[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
-                        }
-                        
-                        // Convert to base64
-                        const base64Audio = btoa(
-                            String.fromCharCode(...new Uint8Array(pcmData.buffer))
-                        );
-                        
-                        console.log('Sending PCM audio chunk:', base64Audio.length, 'bytes, format: pcm');
-                        socket.emit('audio_data', {
-                            data: base64Audio,
-                            sample_rate: audioContext.sampleRate,
-                            format: 'pcm'
-                        });
-                    } catch (err) {
-                        console.error('Error in audio processing:', err);
+                    const inputData = event.inputBuffer.getChannelData(0);
+                    // Convert Float32 to Int16 PCM
+                    const pcm16 = new Int16Array(inputData.length);
+                    for (let i = 0; i < inputData.length; i++) {
+                        // Clamp to [-1, 1] and convert to 16-bit integer
+                        const s = Math.max(-1, Math.min(1, inputData[i]));
+                        pcm16[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+                    }
+                    
+                    // Add to buffer
+                    window.pcmBuffer.push(pcm16);
+                    
+                    // Send audio every ~2 seconds (bufferSize samples at 16kHz = ~0.25s per chunk, so 8 chunks = 2s)
+                    if (window.pcmBuffer.length >= 8) {
+                        sendPCMAudio();
                     }
                 };
                 
-                source.connect(processor);
-                processor.connect(audioContext.destination);
+                source.connect(scriptProcessor);
+                scriptProcessor.connect(audioContext.destination);
                 
-                console.log('✓✓✓ Web Audio API processor connected - using PCM format (no ffmpeg needed) ✓✓✓');
-                console.log('Sample rate:', audioContext.sampleRate);
+                // Store scriptProcessor for cleanup
+                window.scriptProcessor = scriptProcessor;
                 
-                // DO NOT USE MediaRecorder - it causes ffmpeg errors!
-                // Completely disable MediaRecorder
-                if (typeof MediaRecorder !== 'undefined') {
-                    console.warn('MediaRecorder is available but DISABLED - using Web Audio API only');
-                }
-                mediaRecorder = null; // Explicitly set to null
+                // Also set up periodic sending (every 3 seconds) as backup
+                processingInterval = setInterval(() => {
+                    if (window.pcmBuffer && window.pcmBuffer.length > 0 && isRecording) {
+                        sendPCMAudio();
+                    }
+                }, 3000);
 
                 isRecording = true;
                 startBtn.disabled = true;
                 stopBtn.disabled = false;
+                finalOutputBtn.disabled = true; // Disable until we have results
                 status.textContent = '🔴 Recording...';
                 status.className = 'status recording';
+                
+                // Reset stutters list when starting new recording
+                allDetectedStutters = [];
+                stuttersContainer.style.display = 'none';
+
+                // Process accumulated audio every 3 seconds to ensure we send data
+                processingInterval = setInterval(async () => {
+                    if (audioChunks.length > 0 && isRecording) {
+                        await processAccumulatedAudio();
+                    }
+                }, 3000);
 
                 updateVisualizer();
 
             } catch (error) {
-                console.error('Unexpected error:', error);
-                alert('Unexpected error: ' + error.message + '\n\nPlease check the browser console for details.');
+                console.error('Error accessing microphone:', error);
+                alert('Error accessing microphone. Please check permissions.');
             }
         });
 
         // Stop recording
-        stopBtn.addEventListener('click', () => {
-            console.log('Stopping recording...');
-            
-            // MediaRecorder is disabled - don't use it
-            // if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-            //     mediaRecorder.stop();
-            // }
-            
-            if (processor) {
-                processor.disconnect();
-                processor = null;
-                console.log('Audio processor disconnected');
+        stopBtn.addEventListener('click', async () => {
+            // Clear processing interval
+            if (processingInterval) {
+                clearInterval(processingInterval);
+                processingInterval = null;
             }
             
-            if (stream) {
-                stream.getTracks().forEach(track => track.stop());
+            // Send any remaining PCM audio
+            if (window.pcmBuffer && window.pcmBuffer.length > 0) {
+                // Send remaining audio
+                const totalLength = window.pcmBuffer.reduce((sum, buf) => sum + buf.length, 0);
+                const combined = new Int16Array(totalLength);
+                let offset = 0;
+                for (const buf of window.pcmBuffer) {
+                    combined.set(buf, offset);
+                    offset += buf.length;
+                }
+                // Convert to base64 efficiently
+                const uint8Array = new Uint8Array(combined.buffer);
+                let binary = '';
+                const chunkSize = 8192;
+                for (let i = 0; i < uint8Array.length; i += chunkSize) {
+                    binary += String.fromCharCode.apply(null, uint8Array.subarray(i, i + chunkSize));
+                }
+                const base64Audio = btoa(binary);
+                socket.emit('audio_data', {
+                    data: base64Audio,
+                    sample_rate: 16000,
+                    format: 'pcm'
+                });
+            }
+            
+            // Disconnect script processor
+            if (window.scriptProcessor) {
+                window.scriptProcessor.disconnect();
+                window.scriptProcessor = null;
+            }
+            
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                mediaRecorder.stop();
+                mediaRecorder.stream.getTracks().forEach(track => track.stop());
             }
 
-            if (audioContext) {
+            if (audioContext && audioContext.state !== 'closed') {
                 audioContext.close();
             }
 
@@ -554,6 +716,8 @@
             stopBtn.disabled = true;
             status.textContent = 'Ready to record';
             status.className = 'status idle';
+            audioChunks = []; // Clear chunks
+            if (window.pcmBuffer) window.pcmBuffer = [];
 
             // Reset visualizer
             const bars = visualizer.children;
@@ -562,76 +726,179 @@
             }
 
             socket.emit('reset');
+            
+            // Store final results before resetting
+            finalResults.rawText = accumulatedRawText || rawText.textContent;
+            finalResults.cleanedText = cleanedText.textContent;
+            
+            // Store all accumulated stutters (use the accumulated list)
+            if (allDetectedStutters.length > 0) {
+                finalResults.stutters = [...allDetectedStutters];
+            } else if (stuttersList && stuttersList.children.length > 0) {
+                finalResults.stutters = Array.from(stuttersList.children).map(item => {
+                    const strong = item.querySelector('strong');
+                    return strong ? strong.textContent.trim() : item.textContent.trim();
+                }).filter(s => s);
+            } else {
+                finalResults.stutters = [];
+            }
+            
+            // Extract predictions
+            if (predictions && predictions.children.length > 0) {
+                finalResults.predictions = Array.from(predictions.children).map(card => {
+                    const predText = card.querySelector('.prediction-text');
+                    return predText ? predText.textContent.trim() : '';
+                }).filter(p => p && p !== 'Start speaking to see predictions...');
+            } else {
+                finalResults.predictions = [];
+            }
+            
+            // Enable Final Output button if we have results
+            if (finalResults.rawText && finalResults.rawText !== 'Waiting for audio input...' && 
+                finalResults.rawText !== 'Processing... (no speech detected yet)') {
+                finalOutputBtn.disabled = false;
+            }
+            
+            // Reset accumulated text and stutters
+            if (typeof accumulatedRawText !== 'undefined') {
+                accumulatedRawText = '';
+            }
+            allDetectedStutters = []; // Reset stutters list for next recording
+            rawText.textContent = 'Waiting for audio input...';
+            cleanedText.textContent = 'Waiting for audio input...';
+            stuttersContainer.style.display = 'none'; // Hide stutters container
         });
         
-        // Demo button - show example outputs for screenshots
-        demoBtn.addEventListener('click', () => {
-            // Stop any ongoing recording
-            if (isRecording) {
-                stopBtn.click();
-            }
+        // Final Output button click handler
+        finalOutputBtn.addEventListener('click', () => {
+            // Update modal content with final results
+            modalRawText.textContent = finalResults.rawText || 'No raw audio captured.';
+            modalRawText.style.color = finalResults.rawText ? '#333' : '#999';
             
-            // Get current demo (before incrementing)
-            const demo = demoExamples[currentDemoIndex];
+            modalCleanedText.textContent = finalResults.cleanedText || 'No cleaned text available.';
+            modalCleanedText.style.color = finalResults.cleanedText ? '#2e7d32' : '#999';
             
-            // Show raw text
-            rawText.textContent = demo.raw;
-            
-            // Show cleaned text
-            cleanedText.textContent = demo.cleaned;
-            
-            // Show stutters
-            if (demo.stutters && demo.stutters.length > 0) {
-                stuttersContainer.style.display = 'block';
-                stuttersList.innerHTML = demo.stutters.map(stutter => 
-                    `<div class="stutter-item">${stutter}</div>`
-                ).join('');
+            // Display stutters
+            if (finalResults.stutters && finalResults.stutters.length > 0) {
+                modalStuttersList.innerHTML = finalResults.stutters.map(stutter => {
+                    const formatted = stutter.includes(' - ') ? stutter : stutter;
+                    return `<span class="modal-stutter-badge">${formatted}</span>`;
+                }).join('');
             } else {
-                stuttersContainer.style.display = 'none';
+                modalStuttersList.innerHTML = '<span style="color: #999;">No stutters detected.</span>';
             }
             
-            // Show predictions
-            if (demo.predictions && demo.predictions.length > 0) {
-                predictions.innerHTML = demo.predictions.map((pred, index) => `
-                    <div class="prediction-card">
-                        <h4>Prediction ${index + 1}</h4>
-                        <div class="prediction-text">${pred}</div>
+            // Display predictions
+            if (finalResults.predictions && finalResults.predictions.length > 0) {
+                modalPredictionsList.innerHTML = finalResults.predictions.map((pred, index) => `
+                    <div style="margin: 10px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #667eea;">
+                        <strong style="color: #667eea;">Prediction ${index + 1}:</strong>
+                        <div style="margin-top: 8px; color: #333;">${pred}</div>
                     </div>
                 `).join('');
+            } else {
+                modalPredictionsList.innerHTML = '<span style="color: #999;">No predictions available.</span>';
             }
             
-            // Update status
-            status.textContent = `📸 Demo Mode - Example ${currentDemoIndex + 1}/${demoExamples.length} - Ready for Screenshot`;
-            status.className = 'status idle';
-            
-            // Cycle to next demo for next click
-            currentDemoIndex = (currentDemoIndex + 1) % demoExamples.length;
-            
-            // Update button text to show next demo number
-            demoBtn.textContent = `Show Demo ${currentDemoIndex + 1}/${demoExamples.length}`;
+            // Show modal
+            finalOutputModal.classList.add('show');
+        });
+        
+        // Close modal handlers
+        closeModal.addEventListener('click', () => {
+            finalOutputModal.classList.remove('show');
+        });
+        
+        finalOutputModal.addEventListener('click', (e) => {
+            if (e.target === finalOutputModal) {
+                finalOutputModal.classList.remove('show');
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && finalOutputModal.classList.contains('show')) {
+                finalOutputModal.classList.remove('show');
+            }
         });
 
         // Handle transcription results
         socket.on('transcription_result', (result) => {
-            if (result.raw_text) {
-                rawText.textContent = result.raw_text || 'Waiting for audio input...';
+            console.log('Received transcription result:', result);
+            
+            // Accumulate raw text (append new transcription to existing)
+            if (result.raw_text && result.raw_text.trim()) {
+                // If we have accumulated text, append with space
+                if (accumulatedRawText && !accumulatedRawText.endsWith(' ')) {
+                    accumulatedRawText += ' ';
+                }
+                accumulatedRawText += result.raw_text;
+                rawText.textContent = accumulatedRawText;
+                rawText.style.color = '#333';
+            } else if (result.raw_text === '') {
+                // Only show "Processing..." if we have no accumulated text
+                if (!accumulatedRawText) {
+                    rawText.textContent = 'Processing... (no speech detected yet)';
+                    rawText.style.color = '#999';
+                }
             }
 
-            if (result.cleaned_text) {
-                cleanedText.textContent = result.cleaned_text || 'Waiting for audio input...';
+            // Update cleaned text (accumulate intelligently)
+            if (result.cleaned_text && result.cleaned_text.trim()) {
+                // For cleaned text, accumulate but avoid duplicates
+                if (cleanedText.textContent && cleanedText.textContent !== 'Waiting for audio input...' && 
+                    cleanedText.textContent !== 'Processing... (no speech detected yet)') {
+                    // Append if new content doesn't already exist
+                    if (!cleanedText.textContent.includes(result.cleaned_text)) {
+                        cleanedText.textContent += ' ' + result.cleaned_text;
+                    }
+                } else {
+                    cleanedText.textContent = result.cleaned_text;
+                }
+                cleanedText.style.color = '#2e7d32';
+            } else if (result.cleaned_text === '' && !cleanedText.textContent.includes('Waiting') && 
+                       !cleanedText.textContent.includes('Processing')) {
+                // Keep existing cleaned text if new result is empty
+            } else if (result.cleaned_text === '') {
+                cleanedText.textContent = 'Processing... (no speech detected yet)';
+                cleanedText.style.color = '#999';
+            }
+            
+            // Update status back to recording after processing
+            if (isRecording) {
+                status.textContent = '🔴 Recording...';
+                status.className = 'status recording';
             }
 
-            // Display stutters
+            // Display stutters with pattern format (word - count) - accumulate all stutters continuously
             if (result.stutters && result.stutters.length > 0) {
+                // Add new stutters to the accumulated list (avoid duplicates)
+                result.stutters.forEach(stutter => {
+                    const formatted = stutter.includes(' - ') ? stutter : stutter;
+                    // Check if this stutter pattern already exists
+                    if (!allDetectedStutters.includes(formatted)) {
+                        allDetectedStutters.push(formatted);
+                    }
+                });
+                
+                // Always show the stutters container if we have any stutters
+                if (allDetectedStutters.length > 0) {
+                    stuttersContainer.style.display = 'block';
+                    stuttersList.innerHTML = allDetectedStutters.map(stutter => 
+                        `<div class="stutter-item"><strong>${stutter}</strong></div>`
+                    ).join('');
+                }
+            } else if (allDetectedStutters.length > 0) {
+                // Keep showing accumulated stutters even if current result has none
                 stuttersContainer.style.display = 'block';
-                stuttersList.innerHTML = result.stutters.map(stutter => 
-                    `<div class="stutter-item">${stutter}</div>`
+                stuttersList.innerHTML = allDetectedStutters.map(stutter => 
+                    `<div class="stutter-item"><strong>${stutter}</strong></div>`
                 ).join('');
             } else {
                 stuttersContainer.style.display = 'none';
             }
 
-            // Display predictions
+            // Display predictions (based on raw stuttered audio)
             if (result.predictions && result.predictions.length > 0) {
                 predictions.innerHTML = result.predictions.map((pred, index) => `
                     <div class="prediction-card">
@@ -651,28 +918,22 @@
         // Connection status
         socket.on('connect', () => {
             console.log('Connected to server');
-            status.textContent = 'Ready to record';
+            if (status && !isRecording) {
+                status.textContent = 'Ready to record (Connected)';
+            }
         });
 
         socket.on('disconnect', () => {
             console.log('Disconnected from server');
-            status.textContent = '⚠️ Disconnected from server';
+            if (status) {
+                status.textContent = 'Disconnected from server';
+                status.className = 'status idle';
+            }
         });
 
         socket.on('connect_error', (error) => {
             console.error('Connection error:', error);
-            status.textContent = '❌ Connection error';
-            alert('Cannot connect to server. Please make sure the server is running.');
-        });
-
-        // Show permission help if needed
-        document.addEventListener('DOMContentLoaded', () => {
-            // Check if we're on HTTPS or localhost (required for microphone)
-            if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
-                const helpBox = document.getElementById('permissionHelp');
-                helpBox.style.display = 'block';
-                helpBox.innerHTML = '<p><strong>⚠️ HTTPS Required:</strong> Microphone access requires HTTPS or localhost. Please use http://localhost:5001</p>';
-            }
+            alert('Failed to connect to server. Please make sure the server is running.');
         });
     </script>
 </body>

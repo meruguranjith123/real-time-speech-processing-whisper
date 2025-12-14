@@ -128,3 +128,7 @@ After fixing permissions, you should see:
 
 **Most common fix:** Click the lock/microphone icon in address bar → Allow → Refresh page
 
+
+
+
+

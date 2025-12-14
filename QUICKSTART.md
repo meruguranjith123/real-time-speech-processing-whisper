@@ -86,3 +86,7 @@ This will record 5 seconds of audio and show all results.
 - For better accuracy (slower), change `model_size="base"` to `"small"` or `"medium"` in `app.py`
 - For faster processing (less accurate), use `"tiny"`
 
+
+
+
+

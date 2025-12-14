@@ -11,6 +11,7 @@ from typing import List, Tuple, Optional
 import re
 from collections import deque
 import logging
+from scipy import signal
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -123,8 +124,11 @@ class SpeechProcessor:
             text += '.' if not text.endswith('.') else ''
         
         # Now handle word-level repetitions within remaining text
-        words = re.findall(r'\b\w+\b', text.lower())
+        # First, preserve original text for stutter pattern detection
+        original_words = re.findall(r'\b\w+\b', text.lower())
+        words = original_words.copy()
         cleaned_words = []
+        stutter_patterns = []  # Store patterns like "the - 2"
         
         i = 0
         while i < len(words):
@@ -139,7 +143,9 @@ class SpeechProcessor:
             
             # If repetition exceeds threshold, it's a stutter
             if count >= self.repetition_threshold:
-                detected_stutters.append(f"{word} (repeated {count} times)")
+                # Format: "word - count" (e.g., "the - 2")
+                stutter_patterns.append(f"{word} - {count}")
+                detected_stutters.append(f"{word} - {count}")
                 cleaned_words.append(word)  # Keep only one instance
                 i = j
             else:
@@ -257,8 +263,9 @@ class SpeechProcessor:
         # Detect and clean stuttering
         cleaned_text, stutters = self.detect_stuttering(raw_text)
         
-        # Predict next sentences
-        predictions = self.predict_next_sentences(cleaned_text)
+        # Predict next sentences based on RAW text (with stutters) for better context
+        # This gives predictions that understand the full context including stutters
+        predictions = self.predict_next_sentences(raw_text)
         
         return {
             "raw_text": raw_text,
